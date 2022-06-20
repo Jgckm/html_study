@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改背景颜色</title>
+    <style>
+        /* 1.媒体查询一般按从大到小 或者 从小到大的顺序来 */
+        /* 2.小于540px  页面改为蓝色 */
+        @media screen and (max-width:540px) {
+            body {
+                background-color: skyblue;
+            }
+        }
+
+        /* 3.540px~970px 页面颜色改为绿色 */
+        /* @media screen and (min-width:540px) and (max-width:969px) {
+            body {
+                background-color: green;
+            }
+        } */
+        /* 简写3  */
+        @media screen and (min-width:540px) {
+            body {
+                background-color: green;
+            }
+        }
+
+        /* 4.大于等于970px 页面的颜色改为 红色 */
+        @media screen and (min-width:960px) {
+            body {
+                background-color: red;
+            }
+        }
+    </style>
+</head>
+<!-- 如果从小到写代码会很简洁 -->
+<!-- 5.screen 和 and 不能省略 -->
+
+<body>
+
+</body>
+
+</html>

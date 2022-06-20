@@ -1,0 +1,23 @@
+.header {
+  width: 200px;
+  height: 200px;
+  background-color: pink;
+  //   1.less的嵌套使用 子元素样式直接写到父元素里面
+  a {
+    text-decoration: none;
+    color: red;
+  }
+}
+.nav {
+  width: 100px;
+  height: 100px;
+  background-color: pink;
+  transition: all 0.3s ease;
+  //   2.如果有伪类、伪元素、交集选择器内层选择器前面需要加&
+  &:hover {
+    background-color: skyblue;
+  }
+  .logo {
+    color: green;
+  }
+}

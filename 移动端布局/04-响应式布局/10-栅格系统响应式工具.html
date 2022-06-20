@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/04-响应式布局/04-bootstrap的使用/bootstrap/css/bootstrap.min.css">
+    <title>栅格系统响应工具</title>
+    <style>
+        .row div:nth-child(1) {
+            height: 50px;
+            background-color: pink;
+        }
+
+        .row div:nth-child(2) {
+            height: 50px;
+            background-color: skyblue;
+        }
+
+        .row div:nth-child(3) {
+            height: 50px;
+            background-color: khaki;
+        }
+
+        .row div:nth-child(4) {
+            height: 50px;
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+<!-- 隐藏 -->
+<!-- hidden-md   在中屏幕下隐藏 -->
+<!-- hidden-xs   在超小屏幕下隐藏 -->
+<!-- hidden-sm   在小屏下隐藏 -->
+<!-- hidden-lg   在大屏下隐藏 -->
+
+<!-- 显示 -->
+<!-- vidible-lg 在大屏模式下显示 -->
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-3 visible-lg">我会显示</div>
+            <div class="col-xs-3 hidden-md hidden-xs">我会隐藏</div>
+            <div class="col-xs-3">3</div>
+            <div class="col-xs-3">4</div>
+        </div>
+    </div>
+</body>
+
+</html>

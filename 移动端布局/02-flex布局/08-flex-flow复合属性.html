@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            display: flex;
+            width: 800px;
+            height: 400px;
+            background-color: pink;
+            /* 沿着Y轴排列 让他换行（列） */
+            /* flex-direction: column;
+            flex-wrap: wrap; */
+            /* 沿着Y轴排列 让他换行（列）简写 */
+            flex-flow: column wrap;
+
+        }
+
+        div span {
+            width: 150px;
+            height: 100px;
+            background-color: skyblue;
+            /* margin: 10px; */
+        }
+    </style>
+</head>
+<!-- 1.设置主轴排列方式 flex-direction
+2.换行flex-wrap
+3.设置侧轴排列方式 algin-items(单行) alrgin-cntent(多行)
+
+简写：
+flex-flow:flex-driectin flex-wrap -->
+
+<body>
+    <div>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>3</span>
+        <span>3</span>
+    </div>
+</body>
+
+</html>

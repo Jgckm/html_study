@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./04-bootstrap的使用/bootstrap/css/bootstrap.min.css">
+    <title>栅格系统</title>
+    <style>
+        [class^=col] {
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<!-- 类名书写规范  bootstrap 会预先把屏幕分为12份 例如：col-lg-3 在大屏时 调用此类会占用三份 -->
+<!-- col-lg- 大
+col-md- 中
+col-sm- 小
+col-xs- 超小 -->
+<!-- 每一列默认有左右15px 像素的 padding 距离 -->
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">12</div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">12</div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">12</div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">12</div>
+        </div>
+        <!-- 如果孩子的份数相加等于 12 则孩子能占满整个的 container 的宽度 -->
+        <div class="row">
+            <div class="col-lg-6">12</div>
+            <div class="col-lg-2">12</div>
+            <div class="col-lg-2">12</div>
+            <div class="col-lg-2">12</div>
+        </div>
+        <!-- 如果孩子的份数相加小于 12 则孩子不能沾满 container 的人宽度 -->
+        <div class="row">
+            <div class="col-lg-6">12</div>
+            <div class="col-lg-3">12</div>
+            <div class="col-lg-1">12</div>
+            <div class="col-lg-1">12</div>
+        </div>
+
+        <!-- 如果孩子相加大于 12 container 怎会另起一行来显示  多余哪一个会另起一行显示-->
+        <div class="row">
+            <div class="col-lg-6">12</div>
+            <div class="col-lg-2">12</div>
+            <div class="col-lg-2">12</div>
+            <div class="col-lg-3">12</div>
+        </div>
+    </div>
+</body>
+
+</html>

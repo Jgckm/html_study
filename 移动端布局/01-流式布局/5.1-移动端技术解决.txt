@@ -1,0 +1,19 @@
+1.初始化CSS Github：https://github.com/necolas/normalize.css/
+
+2.CSS3盒子模型 box-sizing
+box-sizing:border-box;
+-webkit-box-sizing:border-box;
+    传统盒子宽度计算：盒子的宽度=CSS中设置的width+border+padding
+    CSS3盒子模型：盒子的宽度=CSS中设置的宽width里包含了border和padding也就是说，我们的CSS3中的盒子模型，padding和border不会撑大盒子
+3.去除点击高亮
+-webkit-tap-highlight-color:transparent;
+
+4.在移动端浏览器默认的外观在iOS上加这个属性才能给按钮和输入框自定义样式
+-webkit-appearance:none;
+5.禁用长按页面是弹出带单
+img,a{
+    -webkit-touch-callout:none;
+}
+6.自动滚动条
+    resize:none
+    overflow:auto

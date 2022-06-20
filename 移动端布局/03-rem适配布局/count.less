@@ -1,0 +1,13 @@
+@baseFont: 50px;
+html {
+  font-size: @baseFont;
+}
+@border:5px + 20; // 可以写单位也可以不写   + - * / 运算
+// 1.运算符号前后需要用空格隔开
+// 2.两个参数参与运算  如果只有一个有单位 怎最后的结果就会以这个单位为准
+// 3.如果两个运算参数都有单位 且单位不统一 怎会优先第一个单位为准
+div {
+  width: (1500px / @baseFont); //除法要加括号
+  height: 100px * 2;
+  border: @border solid #666 - #222;
+}
