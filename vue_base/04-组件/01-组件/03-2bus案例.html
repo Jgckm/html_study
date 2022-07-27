@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../js/vue.js"></script>
+        <style>
+            .item {
+                width: 500px;
+                display: flex;
+                border: 2px solid black;
+            }
+            .item img {
+                float: left;
+            }
+            .item button {
+                height: 25px;
+            }
+            .info {
+                position: fixed;
+                right: 50px;
+                top: 20px;
+                width: 500px;
+                height: 400px;
+                background-color: azure;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box">
+            <button @click="handleAjax">ajax</button>
+            <film-item v-for="item in datalist" :data="item" :key="item.filmId"></film-item>
+
+            <film-detail></film-detail>
+        </div>
+        <script>
+            let bus = new Vue();
+            // bus.$on() 监听
+            // bus.$emit() 触发
+
+            Vue.component('filmItem', {
+                props: {
+                    data: {
+                        type: Object,
+                        default: {},
+                    },
+                },
+                template: `
+                <div class="item">
+                    <img  :src="data.poster" width="100px"/>
+                       {{data.name}}
+                    {{data.category}}
+
+                       <button @click="handleClick">详情</button>
+
+
+                    </div>
+                `,
+                methods: {
+                    handleClick() {
+                        // console.log(this.data.synopsis);
+                        bus.$emit('jgck', this.data.synopsis);
+                    },
+                },
+            });
+
+            Vue.component('filmDetail', {
+                // 组件刚刚创建好，就开始订阅
+
+                // 生命周期
+                mounted() {
+                    // console.log('当组件上树后触发');
+                    bus.$on('jgck', data => {
+                        // console.log(data);
+                        this.data = data;
+                    });
+                },
+
+                data() {
+                    return {
+                        data: '',
+                    };
+                },
+
+                template: `<div class="info">{{data}}</div>`,
+            });
+            new Vue({
+                el: '#box',
+                data: {
+                    datalist: [],
+                },
+                methods: {
+                    handleAjax() {
+                        fetch('/03-axios%26fetch/json/maizuo.json')
+                            .then(res => res.json())
+                            .then(res => {
+                                this.datalist = res.data.films;
+                            });
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>

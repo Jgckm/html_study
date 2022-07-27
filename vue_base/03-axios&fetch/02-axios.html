@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../js/vue.js"></script>
+        <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.27.2/axios.min.js"></script>
+        <style>
+            li {
+                overflow: hidden;
+                list-style: none;
+                padding: 10px;
+            }
+            li img {
+                float: left;
+                width: 100px;
+                object-fit: fill;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box">
+            <button @click="hanleFetch">ajax-fetch</button>
+            <ul>
+                <li v-for="data in dataList" :key="data.filmId">
+                    <img :src="data.poster" :alt="data.name" :title="data.name" />
+                    {{data.name}}
+                    <div class="category">
+                        <span>{{data.category}}</span>
+                        <br />
+                        <span>影视评分：{{data.grade}}</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <script>
+            new Vue({
+                el: '#box',
+                data: {
+                    dataList: [],
+                },
+                methods: {
+                    // get 方式
+                    hanleFetch() {
+                        axios.get('/01-axios%26fetch/json/maizuo.json').then(res => {
+                            this.dataList = res.data.data.films;
+                        });
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>

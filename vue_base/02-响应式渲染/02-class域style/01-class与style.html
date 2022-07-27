@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="box">
+            <div :class="classobj">动态切换class 1- 对象</div>
+            <div :class="classarr">动态切换class 2- 数组</div>
+            <div :style="styleobj">动态切换style 2- 对象</div>
+            <div :style="stylearr">动态切换style 2- 数组</div>
+        </div>
+        <script>
+            let vm = new Vue({
+                el: '#box',
+                data: {
+                    classobj: {
+                        aa: true,
+                        bb: true,
+                        cc: false,
+                    },
+                    classarr: ['aa', 'bb'], // 可以使用 classarr.push() 来动态添加 属性 使用 classarr.splice() 方法删除
+                    styleobj: {
+                        backgroundColor: 'pink', // vm.set(styleobj,backgroundColor,'red')
+                    },
+                    stylearr: [{ backgroundColor: 'green' }], // vm.stylearr.push({fonstSzie:"30px"})
+                },
+            });
+            // vue2 解决方法 Vue2.set(对象，属性，值)
+            // vm.set(classobj,dd,true)  设置动态属性
+            // vue3 支持动态添加属性的拦截
+        </script>
+    </body>
+</html>

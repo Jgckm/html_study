@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../../js/vue.js"></script>
+        <style>
+            .left {
+                position: fixed;
+                top: 0;
+                left: 0;
+            }
+            .right {
+                position: fixed;
+                right: 0;
+                top: 0;
+            }
+
+            .lefttoright-enter-active {
+                animation: leftOut 1.3s;
+            }
+            .lefttoright-leave-active {
+                animation: leftOut 1.3s reverse;
+            }
+
+            .left-leave-active {
+                animation: leftOut 1.3s reverse;
+            }
+            .left-enter-active {
+                animation: leftOut 1.3s;
+            }
+
+            .right-enter-active {
+                animation: rightOut 1.3s;
+            }
+            .right-leave-active {
+                animation: rightOut 1.3s reverse;
+            }
+            @keyframes leftOut {
+                0% {
+                    transform: translateX(-100%);
+                    opacity: 0;
+                }
+                100% {
+                    transform: translateX(0px);
+                    opacity: 1;
+                }
+            }
+            @keyframes rightOut {
+                0% {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                100% {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box">
+            <navbar @myevent="handdleEvent"></navbar>
+
+            <sidebar v-show="isShow" mode="right"></sidebar>
+        </div>
+        <script>
+            Vue.component('navbar', {
+                template: `<div><button @click="handleClick">click</button></div>`,
+                methods: {
+                    handleClick() {
+                        this.$emit('myevent');
+                    },
+                },
+            });
+            Vue.component('sidebar', {
+                props: {
+                    mode: {
+                        type: String,
+                        default: 'lefttoright',
+                    },
+                },
+                template: `
+                <transition :name="mode" >
+                <ul style="background-color: pink; width: 200px; height: 500px" :class='mode'>
+                <li>首页</li>
+                <li>钱包</li>
+                <li>设置</li>
+            </ul>
+                 </transition>
+            `,
+            });
+            new Vue({
+                el: '#box',
+                data: {
+                    isShow: true,
+                },
+                methods: {
+                    handdleEvent() {
+                        this.isShow = !this.isShow;
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>

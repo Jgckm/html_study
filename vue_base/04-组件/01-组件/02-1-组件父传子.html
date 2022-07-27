@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="box">
+            <div style="background-color: pink">根组件标题</div>
+            <navbar myname="电影" :myright="false" :parent="parent"></navbar>
+            <!-- 动态绑定不显示 -->
+            <navbar myname="影院" :myright="true"></navbar>
+        </div>
+        <script>
+            Vue.component('navbar', {
+                // props: ['myname', 'myright'], // 传递参数
+                // props: {
+                //     myname: String,
+                //     myright: Boolean, // 属性验证
+                // },
+
+                // 属性验证和默认属性
+                props: {
+                    myname: {
+                        type: String,
+                        default: '',
+                    },
+                    parent: {
+                        type: String,
+                        default: '',
+                    },
+                    myright: {
+                        type: Boolean,
+                        default: true,
+                    },
+                },
+                template: `<div>
+                    <button>left</button>
+                    <span>{{myname}}{{parent}}</span>
+                    <button v-show='myright'>right</button>
+                    </div>`,
+            });
+            new Vue({
+                el: '#box',
+                data: {
+                    parent: 'wwwwwwwwwwwwwww',
+                },
+            }); // 创建根组件
+        </script>
+    </body>
+</html>

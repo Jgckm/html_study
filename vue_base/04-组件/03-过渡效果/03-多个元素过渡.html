@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../../js/vue.js"></script>
+        <style>
+            /* 出厂效果 */
+            .keep-enter-active {
+                animation: aaa 1.5s;
+            }
+            .keep-leave-active {
+                animation: aaa 1.5s reverse;
+            }
+            @keyframes aaa {
+                0% {
+                    opacity: 0;
+                    transform: translateX(100px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateX(0px);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box">
+            <button @click="isShow=!isShow">change</button>
+            <!-- mode 属性  out-in  in-out -->
+            <transition name="keep" mode="out-in">
+                <div v-if="isShow" key="1">1111111111</div>
+                <div v-else key="2">2222222222222222222</div>
+            </transition>
+        </div>
+        <script>
+            new Vue({
+                el: '#box',
+                data: {
+                    isShow: true,
+                },
+            });
+        </script>
+    </body>
+</html>

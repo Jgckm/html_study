@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="box">
+            <input type="text" v-model="textValue" />
+            <button @click="handledadd()">add</button>
+            <ul v-show="datalist.length">
+                <li v-for="(data,index) in datalist">
+                    {{data}}
+                    <button @click="handleDel(index)">删除</button>
+                </li>
+            </ul>
+            <div v-show="!datalist.length">代办事项空空如也</div>
+        </div>
+        <script>
+            new Vue({
+                el: '#box',
+                data: {
+                    datalist: ['asdf', 'sdasd', 'asdaswr', 'sagrryz'],
+                    textValue: '',
+                },
+                methods: {
+                    handledadd() {
+                        this.datalist.push(this.textValue);
+                        this.textValue = '';
+                    },
+                    handleDel(index) {
+                        this.datalist.splice(index, 1);
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>

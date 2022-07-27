@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.27.2/axios.min.js"></script>
+        <script src="../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="box">
+            <button @click="handleAjax">click-ajax</button>
+            <ul>
+                <li v-for="data in datalist" :key="data.id">
+                    <img :src="data.img" width="100px" />
+                    {{data.nm}}
+                </li>
+            </ul>
+        </div>
+        <script>
+            // 创建过滤器  Vue3不支持过滤器
+            // Vue.filter('imgFiter', url => {
+            //     return '999999';
+            // });
+
+            new Vue({
+                el: '#box',
+                data: { datalist: [] },
+                methods: {
+                    handleAjax() {
+                        axios.get('/01-axios%26fetch/json/maoyan.json').then(res => {
+                            this.datalist = res.data.data.hot;
+                        });
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>

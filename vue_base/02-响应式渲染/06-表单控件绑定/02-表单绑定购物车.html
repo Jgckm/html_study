@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../../js/vue.js"></script>
+        <style>
+            li {
+                display: flex;
+                justify-content: space-around;
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <ul>
+                <input type="checkbox" v-model="isAll" @change="handleClick" />
+                全选/全不选
+                <li v-for="(item,index) in datalist" :key="item.id">
+                    <div>
+                        <input
+                            type="checkbox"
+                            v-model="checklist"
+                            :value="item"
+                            @change="handleItemClick"
+                        />
+                        <span>{{item.name}}</span>
+                        <span style="color: red">价格：{{item.price}}</span>
+                    </div>
+                    <div>
+                        <button @click="item.number--" :disabled="item.number==1">-</button>
+                        <span>{{ item.number }}</span>
+                        <button @click="item.number++" :disabled="item.number==item.limit">
+                            +
+                        </button>
+                    </div>
+                    <div>
+                        <button @click="handleDelete(index,item.id)">删除</button>
+                    </div>
+                </li>
+                <div>总金额：{{ sum() }}</div>
+                {{checklist}}
+            </ul>
+        </div>
+        <script>
+            new Vue({
+                el: '.box',
+                data: {
+                    isAll: false,
+                    checklist: [],
+                    datalist: [
+                        {
+                            name: '商品1',
+                            id: 1,
+                            limit: 4,
+                            number: 3,
+                            price: 20,
+                        },
+                        {
+                            name: '商品2',
+                            id: 2,
+                            number: 4,
+                            limit: 8,
+                            price: 15,
+                        },
+                        {
+                            name: '商品3',
+                            id: 3,
+                            number: 1,
+                            limit: 2,
+                            price: 24,
+                        },
+                        {
+                            name: '商品4',
+                            number: 6,
+                            id: 4,
+                            limit: 5,
+                            price: 40,
+                        },
+                    ],
+                },
+                methods: {
+                    sum() {
+                        let total = 0;
+                        this.checklist.forEach(item => {
+                            total += item.price * item.number;
+                        });
+                        return total;
+                    },
+                    // 删除
+                    handleDelete(index, id) {
+                        this.datalist.splice(index, 1);
+
+                        // 判断id
+                        this.checklist = this.checklist.filter(item => item.id != id);
+
+                        // 手动的调用
+                        this.handleItemClick();
+                    },
+                    handleClick() {
+                        if (this.isAll) {
+                            this.checklist = this.datalist;
+                        } else {
+                            this.checklist = [];
+                        }
+                    },
+                    // 每一项选择判断是否全部勾选
+                    handleItemClick() {
+                        if (this.checklist.length === this.datalist.length) {
+                            this.isAll = true;
+                        } else {
+                            this.isAll = false;
+                        }
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>

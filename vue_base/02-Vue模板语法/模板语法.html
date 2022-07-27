@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <h1>差值语法</h1>
+            <h3>你好,{{name}}</h3>
+            <hr />
+            <h1>指令语法</h1>
+            <a v-bind:href="url" v-bind:x="hello">点我去百度搜索1</a>
+            <a :href="school.url.toUpperCase()" :x="school.name">点我去百度搜索2</a>
+        </div>
+    </body>
+    <script>
+        Vue.config.productionTip = false; // 阻止 vue 在启动时生成生产提示
+
+        new Vue({
+            el: '#root',
+            data: {
+                name: 'jgck',
+                url: 'http://baidu.com',
+                hello: '你好',
+                school: {
+                    name: '我是school',
+                    url: 'https://baidu.com/',
+                },
+            },
+        });
+    </script>
+</html>

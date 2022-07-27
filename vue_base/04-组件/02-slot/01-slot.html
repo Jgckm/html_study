@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="box">
+            <!-- 在自定义标签内添加标签 用 slot -->
+            <!-- <slot ></slot> 单个插槽 -->
+            <!-- <slot name="a"></slot> 具体插槽 -->
+            <child>
+                <div slot="a">aaaaaaa</div>
+                <div slot="b">bbbbbbbb</div>
+                <div slot="c">cccccc</div>
+                <div>22222222</div>
+            </child>
+
+            <navbar>
+                <button slot="left">啊啊啊</button>
+                <i slot="right">字体图标</i>
+            </navbar>
+        </div>
+        <script>
+            Vue.component('navbar', {
+                template: `
+                <div>
+                <slot name="left"></slot>    
+                <span>navbar</span>
+                <slot name="right"></slot>
+                </div>
+                `,
+            });
+            // slot 插槽
+            Vue.component('child', {
+                template: `
+                <div>
+                    child
+                    <slot name="a"></slot>
+                    <slot name="b"></slot>
+                    <slot name="c"></slot>
+                    <slot ></slot>
+                </div>`,
+            });
+            new Vue({
+                el: '#box',
+                data: {},
+            });
+        </script>
+    </body>
+</html>

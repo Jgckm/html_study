@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="box">
+            {{mytext}}
+            <!-- v-html 指令 直接渲染成html标签 -->
+            <div v-html="mytext"></div>
+        </div>
+        <script>
+            new Vue({
+                el: '#box',
+                data: { mytext: '<b>加粗</b>' },
+                methods: {},
+            });
+        </script>
+    </body>
+</html>

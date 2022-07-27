@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="box">
+            <!-- input 事件 value发生改变的时候就触发 -->
+            <input v-model="mytext" type="text" />
+            <ul>
+                <li v-for="item in test()" :key="item">{{item}}</li>
+            </ul>
+        </div>
+        <script>
+            let vm = new Vue({
+                el: '#box',
+                data: {
+                    mytext: '',
+                    datalist: ['aaa', 'bbbb', 'cccc', 'dddd', 'bcc', 'bbc', 'asdw'],
+                },
+                methods: {
+                    test() {
+                        return this.datalist.filter(item => item.includes(this.mytext));
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="box">
+            <template v-if="isCreated">
+                <div>1111111</div>
+                <div>2222222</div>
+                <div>3333333</div>
+            </template>
+        </div>
+        <script>
+            let vm = new Vue({
+                el: '#box',
+                data: {
+                    isCreated: true,
+                },
+            });
+            // template 是一个包元素 不会真正的创建在页面上
+        </script>
+    </body>
+</html>

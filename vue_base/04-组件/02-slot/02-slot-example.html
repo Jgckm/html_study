@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../../js/vue.js"></script>
+        <style>
+            li {
+                list-style: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box">
+            <navbar>
+                <button @click="isShow=!isShow">click</button>
+            </navbar>
+            <sidebar v-show="isShow"></sidebar>
+        </div>
+        <script>
+            Vue.component('navbar', {
+                template: `<slot></slot>`,
+            });
+            Vue.component('sidebar', {
+                template: ` <ul style="background-color: pink; width: 200px; height: 500px">
+            <li>首页</li>
+            <li>钱包</li>
+            <li>设置</li>
+        </ul>`,
+            });
+            new Vue({
+                el: '#box',
+                data: {
+                    isShow: true,
+                },
+                methods: {},
+            });
+        </script>
+    </body>
+</html>

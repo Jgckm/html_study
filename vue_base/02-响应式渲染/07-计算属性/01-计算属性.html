@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="box">
+            <!-- 首字母大写 -->
+            {{myname.substring(0,1).toUpperCase() + myname.substring(1)}}
+            <!-- computed  不可以加括号  -->
+            <!-- 计算属性有缓存 这里只执行一次 -->
+            {{myComputedName}} {{myComputedName}} {{myComputedName}}
+
+            <!-- medthods -->
+            <!-- 函数没有缓存 调用几次就执行几次 -->
+            {{ myMethedName() }} {{ myMethedName() }} {{ myMethedName() }}
+        </div>
+        <script>
+            // 计算属性（防止模板过重，难以维护），负责逻辑放在计算属性中来写
+            let vm = new Vue({
+                el: '#box',
+                // 存放状态
+                data: {
+                    myname: 'jgckM',
+                },
+                // 存放计算
+                computed: {
+                    // 写成函数 必须有返回值
+                    myComputedName() {
+                        console.log('myComputedName--计算属性');
+                        return this.myname.substring(0, 1).toUpperCase() + this.myname.substring(1);
+                    },
+                },
+                // 存放方法
+                methods: {
+                    myMethedName() {
+                        console.log('myMethedName--方法');
+                        return this.myname.substring(0, 1).toUpperCase() + this.myname.substring(1);
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>

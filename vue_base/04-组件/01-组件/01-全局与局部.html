@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="box">
+            <nav-bar></nav-bar>
+            <child></child>
+        </div>
+        <script>
+            // 定义一个全局的组件  // 驼峰写法
+            Vue.component('navBar', {
+                // dom js css
+                template: `<div style="background:red">
+                    <button @click="hanleLeft">left</button>
+                    猫眼电影——{{mayname}}
+                    <button @click="hanleRight">right</button>
+                    <child></child>
+                    <jgck></jgck>
+                    </div>`,
+                methods: {
+                    hanleLeft() {
+                        console.log('left');
+                    },
+                    hanleRight() {
+                        console.log('right');
+                    },
+                },
+                computed: {},
+                watch: {},
+                // 组件中 data 必须是函数写法
+                data() {
+                    return {
+                        mayname: 'jgkcM',
+                    };
+                },
+
+                // 在组件里定义组件  局部组件 只能在当前定义的范围内使用
+                components: {
+                    jgck: {
+                        template: `<div>我是jgck---{{myname}}</div>`,
+                    },
+                    data() {
+                        return {
+                            myname: 'child-111111',
+                        };
+                    },
+                },
+            });
+            // 全局组件 可以在任何地方使用
+            Vue.component('child', {
+                template: `<div style="background:pink">child</div>`,
+            });
+            new Vue({
+                el: '#box',
+            });
+        </script>
+    </body>
+</html>

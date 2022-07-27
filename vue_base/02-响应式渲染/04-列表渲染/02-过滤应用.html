@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="box">
+            <!-- input 事件 value发生改变的时候就触发 -->
+            <input v-model="mytext" type="text" @input="handleInput" />
+            <ul>
+                <li v-for="item in datalist" :key="item">{{item}}</li>
+            </ul>
+        </div>
+        <script>
+            let vm = new Vue({
+                el: '#box',
+                data: {
+                    mytext: '',
+                    datalist: ['aaa', 'bbbb', 'cccc', 'dddd', 'bcc', 'bbc', 'asdw'],
+                    orgrenlsit: ['aaa', 'bbbb', 'cccc', 'dddd', 'bcc', 'bbc', 'asdw'],
+                },
+                methods: {
+                    handleInput() {
+                        // console.log('input', this.mytext);
+                        // es5 filter
+                        this.datalist = this.orgrenlsit.filter(item => item.includes(this.mytext)); // includes()方法匹配字符串
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>

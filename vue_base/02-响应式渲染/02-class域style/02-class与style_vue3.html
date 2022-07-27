@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../../js/vue3.js"></script>
+    </head>
+    <body>
+        <div id="box">
+            {{10+20}} {{myname}} {{mytext}}
+            <input type="text" v-model="mytext" />
+            <button @click="handleAdd()">add</button>
+            <div :class="classobj">动态class-对象写法</div>
+        </div>
+        <script>
+            // new Vue({
+            //     el: '#box',
+            // });
+
+            // vue3 更新
+            let obj = {
+                data() {
+                    return {
+                        // data 更新为一个函数 数据存放在data函数的 return 里面
+                        myname: '更新data',
+                        mytext: '初始化文字',
+                        classobj: {
+                            aa: true,
+                            bb: true,
+                            cc: false,
+                        },
+                    };
+                },
+                methods: {
+                    handleAdd() {
+                        console.log('add', this.mytext);
+                        this.classobj.dd = true;
+                    },
+                },
+            };
+            Vue.createApp(obj).mount('#box');
+        </script>
+    </body>
+</html>

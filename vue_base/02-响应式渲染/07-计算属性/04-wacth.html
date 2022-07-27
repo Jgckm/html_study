@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="box">
+            <!-- input 事件 value发生改变的时候就触发 -->
+            <input v-model="mytext" type="text" />
+            <ul>
+                <li v-for="item in datalist" :key="item">{{item}}</li>
+            </ul>
+        </div>
+        <script>
+            let vm = new Vue({
+                el: '#box',
+                data: {
+                    mytext: '',
+                    datalist: ['aaa', 'bbbb', 'cccc', 'dddd', 'bcc', 'bbc', 'asdw'],
+                    orgrenlsit: ['aaa', 'bbbb', 'cccc', 'dddd', 'bcc', 'bbc', 'asdw'],
+                },
+                watch: {
+                    mytext(newval) {
+                        console.log('改变了', newval);
+                        setTimeout(() => {
+                            this.datalist = this.orgrenlsit.filter(item => item.includes(newval));
+                        }, 1000);
+                    },
+                },
+            });
+
+            /* 
+            data 状态，被拦截
+            方法 => 绑定事件，逻辑计算   可以不用 return 吗，没有缓存
+            计算属性（重视结果）=> 解决模板过重问题 必须有 return 只求结果 有缓存 同步
+            watch (重视过程) ,监听一个值的改变，不用返回值 ，同步异步
+            */
+        </script>
+        */
+    </body>
+</html>

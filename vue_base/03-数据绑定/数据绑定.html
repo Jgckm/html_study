@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            单相数据绑定：
+            <input type="text" v-bind:value="name" />
+            <br />
+            双向数绑定
+            <input type="text" v-model:value="name" />
+            <br />
+        </div>
+    </body>
+    <script>
+        Vue.config.productionTip = false;
+        new Vue({
+            el: '#root',
+            data: {
+                name: '你好吗',
+            },
+        });
+    </script>
+</html>

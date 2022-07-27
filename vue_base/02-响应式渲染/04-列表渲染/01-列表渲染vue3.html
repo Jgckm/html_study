@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../../js/vue3.js"></script>
+    </head>
+    <body>
+        <div id="box">
+            <!-- 遍历数组 加key 值可以从而重用和重新排序现有元素 -->
+            <ul>
+                <li v-for="(data,index) of datalist" :key="data.id">{{data}}---{{index}}</li>
+            </ul>
+            <!-- 遍历对象  of in 两个关键字都可以 -->
+            <ul>
+                <li v-for="(item,key) of obj">{{item}}---{{key}}</li>
+            </ul>
+            <ul>
+                <li v-for="item in 10">{{item}}</li>
+            </ul>
+        </div>
+        <script>
+            let vm = Vue.creatApp({
+                data() {
+                    return {
+                        obj: {
+                            name: 'nihao',
+                            age: 77,
+                            location: 'admin',
+                        },
+                    };
+                },
+            }).count('#box');
+        </script>
+    </body>
+</html>

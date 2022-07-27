@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="box">
+            {{ myname}}
+            <ul>
+                <li v-for="data in datalist" :key="data">{{data}}</li>
+            </ul>
+        </div>
+        <script>
+            // 根组件
+            new Vue({
+                el: '#box',
+                data: { myname: 'jgck', datalist: [] },
+                methods: {},
+                beforeCreate() {
+                    console.log('beforeCreate', this.myname);
+                },
+                created() {
+                    // 初始化操作
+                    console.log('created', '状态初始化挂载当前实例的属性');
+                    this.myname = this.myname + '1111'; // 这是被拦截的状态
+
+                    this.globalName = 'this 可以直接访问的属性值'; // this下面的属性
+                },
+                beforeMount() {
+                    // console.log(document.querySelector('#box').innerHTML); // 模板解析之前最后一次修改节点
+                },
+                mounted() {
+                    // console.log('拿到真实的DOM节点', document.querySelector('#box').innerHTML);
+                    // 依赖于DOM 创建之后，才没有进行初始化工作的插件（轮播图）
+                    // 订阅 bus.$on
+                    // 发 ajax
+
+                    // 模拟ajax
+                    setTimeout(() => {
+                        // 状态立即更新 但是 DOM 异步更新
+                        this.datalist = ['1111', '2222', '33333'];
+                        // 输出结果为零的原因是 还要经过 虚拟DOM创建 diff对比
+                        console.log(document.querySelectorAll('li').length);
+                    }, 2000);
+                },
+                beforeUpdate() {
+                    console.log(
+                        'beforeUpdate',
+                        '更新之前',
+                        '比如记录老的DOM 某些状态：比如滚动条位置记录'
+                    );
+                },
+                update() {
+                    console.log('updated', '更新完成，获取更新后的 DOM ，才进行swiper工作的插件');
+                },
+            });
+        </script>
+
+        <!--
+beforeCreate	vue实例初始化之前调用
+created	vue实例初始化之后调用
+beforeMount	挂载到DOM树之前调用
+mounted	挂载到DOM树之后调用
+beforeUpdate	数据更新之前调用
+updated	数据更新之后调用
+beforeDestroy	vue实例销毁之前调用
+destroyed	vue实例销毁之后调用 
+
+-->
+    </body>
+</html>

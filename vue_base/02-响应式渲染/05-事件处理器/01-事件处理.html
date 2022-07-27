@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="box">
+            {{count}}
+            <!-- $event 事件对象 -->
+            <button @click="handleadd1($event,1,23,3)">add-1 函数表达式</button>
+            <button @click="handleadd2">add-2函数名</button>
+            <button @click="count++">add-表达式</button>
+
+            <!-- click.self 点击自己才触发冒泡不触发 -->
+            <ul @click.self="handleUlClick">
+                <!--  @click.stop 阻止冒泡行为 -->
+                <li @click.stop="handleLiClick">1111</li>
+                <li @click="handleLiClick">2222</li>
+                <!-- 点击一次之后就取消事件绑定 -->
+                <li @click.once="handleLiClick">3333</li>
+            </ul>
+
+            <input type="text" @input="handleInput" />
+            <!--@click.prevent 阻止默认行为 @keyup.enter  只有按 enter键才触发-->
+            <a href="http://www.baidu.com" @click.prevent>百度</a>
+
+            <!-- enter 才触发 -->
+            <input type="text" @keyup.enter="handleKeyUp" />
+            <input type="text" @keyup.enter.ctrl="handleKeyUp" />
+            <input type="text" @keyup.13="handleKeyUp" />
+        </div>
+
+        <script>
+            let vm = new Vue({
+                el: '#box',
+                data: {
+                    count: 1,
+                },
+                methods: {
+                    handleadd1(evt, a, b, c) {
+                        console.log(evt.target, a, b, c);
+                        this.count++;
+                    },
+                    handleadd2() {
+                        this.count++;
+                    },
+                    handleInput(e) {
+                        console.log(e.target.value);
+                    },
+                    handleLiClick() {
+                        console.log('li');
+                    },
+                    handleUlClick() {
+                        console.log('ul');
+                    },
+                    handleKeyUp(e) {
+                        // console.log(e.keyCode);
+
+                        console.log('li add', e.target.value);
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>

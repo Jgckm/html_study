@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../../js/vue.js"></script>
+        <style>
+            /* 出厂效果 */
+            .keep-enter-active {
+                animation: aaa 1.5s;
+            }
+            .keep-leave-active {
+                animation: aaa 1.5s reverse;
+            }
+            @keyframes aaa {
+                0% {
+                    opacity: 0;
+                    transform: translateX(100px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateX(0px);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box">
+            <input type="text" v-model="textValue" />
+            <button @click="handledadd()">add</button>
+            <!-- ul 标签  tag 指定实例化标签 -->
+            <transition-group name="keep" tag="ul">
+                <li v-for="(data,index) in datalist" :key="data" v-show="datalist.length">
+                    {{data}}
+                    <button @click="handleDel(index)">删除</button>
+                </li>
+            </transition-group>
+            <div v-show="!datalist.length">代办事项空空如也</div>
+        </div>
+        <script>
+            new Vue({
+                el: '#box',
+                data: {
+                    datalist: ['asdf', 'sdasd', 'asdaswr', 'sagrryz'],
+                    textValue: '',
+                },
+                methods: {
+                    handledadd() {
+                        this.datalist.push(this.textValue);
+                        this.textValue = '';
+                    },
+                    handleDel(index) {
+                        this.datalist.splice(index, 1);
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>

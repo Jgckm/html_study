@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="box">
+            <child @cleartime="clear" v-if="isCreated"></child>
+        </div>
+
+        <script>
+            Vue.component('child', {
+                data() {
+                    return {
+                        time: 5,
+                    };
+                },
+                created() {
+                    this.id = null;
+                },
+                mounted() {
+                    this.id = setInterval(() => {
+                        this.time--;
+                    }, 1000);
+                },
+                template: `<div>
+            抢购倒计时组件
+            <div>{{time}}</div>
+        </div>`,
+                // 销毁前
+                beforeDestroy() {
+                    console.log('清除定时器，，，，事件解绑');
+                    clearInterval(this.id);
+                },
+                // 销毁后
+                desroyed() {
+                    console.log('清除定时器，，，，事件解绑');
+                },
+            });
+            let vm = new Vue({
+                el: '#box',
+                data: {
+                    isCreated: true,
+                },
+                methods: {
+                    clear() {
+                        this.isCreated = false;
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>

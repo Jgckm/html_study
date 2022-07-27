@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="box">
+            <input type="text" ref="mytext" />
+            <input type="password" ref="mypassword" />
+            <div ref="mydiv">111111</div>
+            <button @click="handleAdd">add</button>
+            <child ref="mychild"></child>
+        </div>
+        <script>
+            Vue.component('child', {
+                data() {
+                    return {
+                        myname: 'jgck-------child',
+                    };
+                },
+                template: `<div>child  {{myname}}</div>`,
+            });
+            // ref 绑定DOM 节点 ，拿到的是 DOM对象
+            // ref 绑定 组件 拿到的就是 组件对象
+            let vm = new Vue({
+                el: '#box',
+                data: {},
+                methods: {
+                    handleAdd() {
+                        // 拿到的是DOM 对象
+                        // console.log(this.$refs.mytext, this.$refs.mypassword, this.$refs.mydiv);
+
+                        // 自建组件 拿到的是 vue 对象
+                        // console.log(this.$refs.mychild.myname);
+
+                        this.$refs.mychild.myname = 'jgck-------child22222222222';
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>

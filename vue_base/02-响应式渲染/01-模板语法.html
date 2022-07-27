@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../js/vue.js"></script>
+        <style>
+            .red {
+                background-color: red;
+            }
+            .yellow {
+                background-color: yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box">
+            {{myname}}--{{age}} {{ 10 > 20 ? 'aaa' :'bbbv'}}
+            <div :class="whichcolor">切换背景色</div>
+            <div :class="iscolor ? 'red' : 'yellow' ">切换背景色</div>
+            <img :src="imgpath" />
+            <button @click="handleChange()">change</button>
+            <button v-on:click="handleChange()">change</button>
+
+            <!-- v-show v-if 指令 -->
+            <div v-show="isShow">我是动态显示和隐藏</div>
+            <div v-if="isCreate">我是动态创建和删除</div>
+
+            <!-- v-for  -->
+            <ul>
+                <li v-for="(item,index) in list">{{item}}---{{index}}</li>
+            </ul>
+        </div>
+        <script>
+            let vm = new Vue({
+                el: '#box',
+                data: {
+                    myname: '年后',
+                    age: 30,
+                    whichcolor: 'red',
+                    iscolor: true,
+                    imgpath: '',
+                    isShow: false,
+                    isCreate: false,
+
+                    list: ['aaaa', 'bbbbb', 'ccccc', 'dddddd'],
+                },
+                // 方法
+                methods: {
+                    handleChange() {
+                        console.log('handleChange', this);
+                        this.myname = '你哈';
+                        this.age = 18;
+                        this.whichcolor = 'yellow';
+                        this.iscolor = !this.iscolor;
+                        this.imgpath = 'https://github.com/yyx990803.png';
+                        this.isShow = !this.isShow;
+                        this.isCreate = !this.isCreate;
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>

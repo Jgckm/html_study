@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="box">
+            <!-- v-if 不加载标签 如果为真就不加载 -->
+            <!-- v-else  -->
+            <!-- <div v-if="isCreated">111111</div>
+            <div v-else="!isCreated">222222</div> -->
+
+            <h1>所有订单</h1>
+            <ul>
+                <li v-for="item in datalist">
+                    {{item.title}}
+                    <span v-if="item.status ===0">未付款</span>
+                    <span v-else-if="item.status ===1">已付款</span>
+                    <span v-else-if="item.status ===2">代发货</span>
+                    <span v-else>已完成</span>
+                </li>
+            </ul>
+        </div>
+        <script>
+            let vm = new Vue({
+                el: '#box',
+                data: {
+                    isCreated: false,
+                    datalist: [
+                        {
+                            title: '2222',
+                            status: 0,
+                        },
+                        {
+                            title: '3333',
+                            status: 1,
+                        },
+                        {
+                            title: '44444',
+                            status: 2,
+                        },
+                        {
+                            title: '44444',
+                            status: 4,
+                        },
+                    ],
+                },
+            });
+        </script>
+    </body>
+</html>
