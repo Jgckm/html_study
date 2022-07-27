@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    </head>
+    <body>
+        <button id="btnGET">GET</button>
+        <button id="btnPOST">POST</button>
+        <button id="btnDELETE">DELETE</button>
+        <button id="btnJSONP">JSONP</button>
+        <script>
+            $(function () {
+                // GET 请求
+                $('#btnGET').on('click', function () {
+                    $.ajax({
+                        type: 'GET',
+                        url: 'http://127.0.0.1/api/get',
+                        data: { name: '张三', age: 20 },
+                        success: function (res) {
+                            console.log(res);
+                        },
+                    });
+                });
+                // GET 请求
+                $('#btnPOST').on('click', function () {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'http://127.0.0.1/api/post',
+                        data: { bookname: '水浒传', auther: '施耐庵' },
+                        success: function (res) {
+                            console.log(res);
+                        },
+                    });
+                });
+                // DELETE 请求
+                $('#btnDELETE').on('click', function () {
+                    $.ajax({
+                        type: 'DELETE',
+                        url: 'http://127.0.0.1/api/delete',
+                        data: { bookname: '水浒传', auther: '施耐庵' },
+                        success: function (res) {
+                            console.log(res);
+                        },
+                    });
+                });
+                $('#btnJSONP').on('click', function () {
+                    $.ajax({
+                        type: 'GET',
+                        url: 'http://127.0.0.1/api/jsonp',
+                        success: function (res) {
+                            console.log(res);
+                        },
+                    });
+                });
+            });
+        </script>
+        <script>
+            function t(params) {}
+        </script>
+    </body>
+</html>
