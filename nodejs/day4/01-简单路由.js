@@ -1,0 +1,13 @@
+const expree = require('express');
+
+const app = expree();
+app.get('/', (req, res) => {
+    res.send('hello world');
+});
+app.post('/', (req, res) => {
+    res.send('Post Requset');
+});
+
+app.listen(80, () => {
+    console.log('http://127.0.0.1');
+});
