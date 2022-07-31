@@ -3,7 +3,7 @@ module.exports = defineConfig({
   transpileDependencies: true
 })
 module.exports = {
-  lintOnSave: false, // 临时关闭代码检测
+  lintOnSave: false // 临时关闭代码检测
   // devServer: {  // 配置方向代理
   //   Proxy: {
   //     '/ajax': {
@@ -20,4 +20,3 @@ module.exports = {
   //   }
   // }
 }
-

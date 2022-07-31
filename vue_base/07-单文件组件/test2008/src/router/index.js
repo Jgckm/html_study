@@ -7,6 +7,7 @@ import Nowplaying from '@/views/films/Nowplaying'
 import Comingsoon from '@/views/films/Comingsoon'
 import Search from '@/views/Search'
 import Detail from '@/views/Detail'
+import Order from '@/views/Order'
 
 Vue.use(VueRouter) // 注册路由插件
 // 配置表
@@ -48,6 +49,10 @@ const routes = [
     path: '/center',
     component: Center
   },
+  {
+    path: '/order',
+    component: Order
+  },
   // 重定向
   {
     path: '*',
@@ -56,8 +61,14 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode: 'history', // history 去除 URL 的# 默认是hash 有 #
+  mode: 'hash', // history 去除 URL 的# 默认是hash 有 #
   routes
 })
+// 全局拦截
+router.beforeEach((to, from, next) => {
+  // if (to.fullPath === '/center') {
 
+  // }
+  next()
+})
 export default router
