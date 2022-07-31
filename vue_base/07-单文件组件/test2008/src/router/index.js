@@ -8,6 +8,7 @@ import Comingsoon from '@/views/films/Comingsoon'
 import Search from '@/views/Search'
 import Detail from '@/views/Detail'
 import Order from '@/views/Order'
+import Login from '@/views/Login'
 
 Vue.use(VueRouter) // 注册路由插件
 // 配置表
@@ -47,11 +48,21 @@ const routes = [
 
   {
     path: '/center',
-    component: Center
+    component: Center,
+    meta: {
+      isJgckM: true
+    }
   },
   {
     path: '/order',
-    component: Order
+    component: Order,
+    meta: {
+      isJgckM: true
+    }
+  },
+  {
+    path: '/login',
+    component: Login
   },
   // 重定向
   {
@@ -66,9 +77,14 @@ const router = new VueRouter({
 })
 // 全局拦截
 router.beforeEach((to, from, next) => {
-  // if (to.fullPath === '/center') {
-
-  // }
+  if (to.meta.isJgckM) {
+    // 判断 本地存储中是否有token
+    if (localStorage.getItem('token')) {
+      next()
+    } else {
+      next('/login')
+    }
+  }
   next()
 })
 export default router

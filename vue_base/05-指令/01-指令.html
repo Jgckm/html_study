@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <div v-hello="'red'">111111111</div>
+        <div v-hello="'yellow'">22222222222</div>
+        <div v-hello="whichColor">22222222222</div>
+    </div>
+    <script>
+        // 指令 ：为了操作底层dom。作者给留方案
+
+        // 实际应用-- 可以通过指令知道什么时候dom创建完成，从而进行 依赖dom的库初始化工作
+        Vue.directive('hello',{
+            // 指令的生命周期。，，，，
+            inserted(el, binding){
+                // 第一次插入到父节点触发
+                console.log('inserted',binding);
+                el.style.background = binding.value
+            },
+            update(){
+                console.log('update')
+                console.log('inserted',binding);
+                el.style.background = binding.value
+            }
+
+        })
+
+        new Vue({
+            el:'#box',
+            data:{
+                whichColor: 'green'
+            }
+
+        })
+    </script>
+</body>
+</html>

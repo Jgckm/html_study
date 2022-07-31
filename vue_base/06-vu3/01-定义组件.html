@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../js/vue3.js"></script>
+    </head>
+    <body>
+        <div id="box">
+            {{myname}}
+            <navbar myname="aaaa">
+            <div>11111</div>
+        </navbar>
+        <siderbar></siderbar>
+        </div>
+        <script>
+            var obj = {
+                data() {
+                    return {
+                        myname: 'jgckM',
+                    };
+                },
+                methods: {},
+                computed: {},
+                created: {
+                    // vue 实例初始化之后
+                },
+                mounted: {
+                    // 挂载dom之后
+                },
+                beforeDestory() {},
+                destory() {},
+            };
+            var app = Vue.createApp({
+                data() {
+                    return {
+                        myname: '你好',
+                    };
+                },
+            });
+            app.component('navbar', {
+                props:['myname'],
+                template: `<div>wwwww-----{{myname}}
+                    <slot></slot>
+                    </div>`,
+            });
+            app.component('siderbar', {
+                template: `<div>3333333</div>`,
+            });
+            app.mount('#box');
+        </script>
+    </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link
+            href="https://cdn.bootcdn.net/ajax/libs/Swiper/8.2.6/swiper-bundle.min.css"
+            rel="stylesheet"
+        />
+        <script src="https://cdn.bootcdn.net/ajax/libs/Swiper/8.2.6/swiper-bundle.min.js"></script>
+        <script src="../js/vue.js"></script>
+        <style>
+            .swiper-container {
+                width:350px;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box">
+            <header>导航栏</header>
+
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div v-for="data in datalist" class="swiper-slide" :key="data">
+                        <img :src="data" alt="" width="100%" />
+                    </div>
+                </div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <footer>底部内容</footer>
+        </div>
+        <script>
+            new Vue({
+                el: '#box',
+                data: {
+                    datalist: [],
+                },
+                mounted() {
+                    // 挂载到DOM树之后调用
+                    // ajax
+                    setTimeout(() => {
+                        this.datalist = [
+                            'https://p0.pipi.cn/mmdb/25bfd671339c7e8ea33139d0476cb0d92908d.jpg?imageMogr2/thumbnail/2500x2500%3E',
+                            'https://p0.pipi.cn/mmdb/25bfd6719ab339b860af333d9ae02439e6179.jpg?imageMogr2/thumbnail/2500x2500%3E',
+                            'https://p0.pipi.cn/mmdb/25bfd671be15bf51baf0ee3a5d06b91bf94c3.jpg?imageMogr2/thumbnail/2500x2500%3E',
+                            'https://p0.pipi.cn/mmdb/25bfd671b12f2ad7c3d7c37db5a7ce2aadac9.jpg?imageMogr2/thumbnail/2500x2500%3E',
+                        ];
+                    }, 2000);
+                    // 初始化过早
+                },
+                updated()
+                {
+                    let mySwiper = new Swiper('.swiper-container', {
+                        autoplay: true,
+                        autoplay: {
+                            delay: 2500,
+                            pauseOnMouseEnter: true, // 鼠标停放暂停自动播放
+                            disableOnInteraction: false, // 如果设置为false，用户操作swiper之后自动切换不会停止，每次都会重新启动autoplay。
+                        },
+                        loop: true,
+                        // 如果需要分页器
+                        pagination: {
+                            el: '.swiper-pagination',
+                        },
+                        // 如果需要前进后退按钮
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                    });
+                }
+            });
+
+            /*
+             * 1.无法复用
+             * 2.如果当前页面 不止一个datalist ，其他的状态更新，update重新运行，new swiper 执行多次出 bug
+             */
+            
+        </script>
+    </body>
+</html>
