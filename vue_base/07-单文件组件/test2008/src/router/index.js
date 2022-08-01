@@ -2,12 +2,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Films from '@/views/Films'
 import Cinemas from '@/views/Cinemas'
-import Center from '@/views/Center'
+// import Center from '@/views/Center'
 import Nowplaying from '@/views/films/Nowplaying'
 import Comingsoon from '@/views/films/Comingsoon'
 import Search from '@/views/Search'
 import Detail from '@/views/Detail'
-import Order from '@/views/Order'
+// import Order from '@/views/Order'
 import Login from '@/views/Login'
 
 Vue.use(VueRouter) // 注册路由插件
@@ -48,14 +48,24 @@ const routes = [
 
   {
     path: '/center',
-    component: Center,
+    component: () => import('@/views/Center'),
     meta: {
       isJgckM: true
     }
+    // beforeEnter (to, from, next) {
+    //   if (localStorage.getItem('token')) {
+    //     next()
+    //   } else {
+    //     next({
+    //       path: '/login',
+    //       query: { redirect: to.fullPath }
+    //     })
+    //   }
+    // }
   },
   {
     path: '/order',
-    component: Order,
+    component: () => import('@/views/Order'), // 懒加载
     meta: {
       isJgckM: true
     }
@@ -76,15 +86,19 @@ const router = new VueRouter({
   routes
 })
 // 全局拦截
-router.beforeEach((to, from, next) => {
-  if (to.meta.isJgckM) {
-    // 判断 本地存储中是否有token
-    if (localStorage.getItem('token')) {
-      next()
-    } else {
-      next('/login')
-    }
-  }
-  next()
-})
+// router.beforeEach((to, from, next) => {
+//   if (to.meta.isJgckM) {
+//     // 判断 本地存储中是否有token
+//     if (localStorage.getItem('token')) {
+//       next()
+//     } else {
+//       // next('/login')
+//       next({
+//         path: '/login',
+//         query: { redirect: to.fullPath }
+//       })
+//     }
+//   }
+//   next()
+// })
 export default router

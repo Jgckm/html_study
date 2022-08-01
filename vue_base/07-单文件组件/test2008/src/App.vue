@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="box">1111</div>
     <ul>
       <!-- vue-router 1 声明式导航 -->
         <!-- <router-link to="/films" active-class="jgckM" tag="li">电影</router-link>
@@ -32,7 +33,16 @@ export default {
 }
 </script>
 <style lang="scss">
+*{
+  margin: 0;
+  padding: 0;
+}
   .jgckM{
     color: red
+  }
+  .box{
+    width: 3.6rem;
+    height:200px;
+    background: yellow;
   }
 </style>
