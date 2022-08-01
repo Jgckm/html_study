@@ -6,11 +6,11 @@
             </div>
 </template>
 <script>
-var a = 111
+import Swiper from 'swiper'
 export default {
   mounted () {
     new Swiper('.swiper-container', {
-      autoplay: true,
+    //   autoplay: true,
       autoplay: {
         delay: 2500,
         pauseOnMouseEnter: true, // 鼠标停放暂停自动播放
