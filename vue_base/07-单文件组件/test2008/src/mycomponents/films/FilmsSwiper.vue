@@ -1,16 +1,26 @@
 <template>
-    <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <slot></slot>
-                </div>
-            </div>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <slot></slot>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
 </template>
 <script>
-import Swiper from 'swiper'
+import Swiper, { Navigation, Pagination, Autoplay } from 'swiper'
+// import Swiper and modules styles
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 export default {
+  props: {
+    loop: {
+      type: Boolean,
+      default: true
+    }
+  },
   mounted () {
     new Swiper('.swiper-container', {
-    //   autoplay: true,
       autoplay: {
         delay: 2500,
         pauseOnMouseEnter: true, // 鼠标停放暂停自动播放
@@ -21,12 +31,15 @@ export default {
       pagination: {
         el: '.swiper-pagination'
       },
-      // 如果需要前进后退按钮
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
-      }
+      modules: [Navigation, Pagination, Autoplay]
     })
   }
 }
 </script>
+<style>
+.swiper-container {
+  position: relative;
+  width: 20.8333rem;
+  overflow: hidden;
+}
+</style>
