@@ -32,11 +32,12 @@
 footer {
   width: 20.8333rem;
   position: fixed;
-  bottom: 0;
+  bottom: -0.2778rem;
   left: 0;
   height: 2.7222rem;
   ul {
     display: flex;
+    background: #fff;
     li {
         flex: 1;
         text-align: center;
