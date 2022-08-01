@@ -1,18 +1,29 @@
 <template>
-    <div>nowplaying
+    <div>
         <ul>
-            <li @click="handleChangePage(data)" v-for="data in datalist" :key="data">
-                {{data}}
+            <li @click="handleChangePage(data.videoId)" v-for="data in datalist" :key="data.videoId">
+              <img :src="data.img" alt="">
+                <div >
+                  <div class="title">{{data.nm}}</div>
+                  <div>观众评 <span>{{data.mk}}</span></div>
+                  <div>主演:{{data.desc}}</div>
+                </div>
             </li>
         </ul>
     </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
   data () {
     return {
       datalist: ['1111', '2222', '223333']
     }
+  },
+  mounted () {
+    axios.get('/maoyan/api/mmdb/movie/v3/list/hot.json?&ci=119&channelId=4').then(res => {
+      this.datalist = res.data.data.hot
+    })
   },
   methods: {
     handleChangePage (id) {
@@ -32,3 +43,30 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+  ul {
+    li{
+      padding: 5px;
+      height: 5.5556rem;
+      img{
+        float: left;
+        width: 3.6667rem;
+      }
+      &>div{
+        margin-left: 3.8889rem;
+      }
+      div{
+        color: #666;
+        span{
+          color: red;
+          font-weight: 900;
+          font-size: 14px;
+        }
+      }
+      .title{
+        color: #333;
+        font-size: 18px;
+      }
+    }
+  }
+</style>

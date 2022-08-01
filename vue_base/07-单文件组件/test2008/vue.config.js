@@ -19,6 +19,11 @@ module.exports = {
         pathRewrite: { '^/jgckM': '' },
         // 如果代理到HTTPS服务器需要设置secure为true，默认为false
         secure: true
+      },
+      '/maoyan': {
+        target: 'https://i.maoyan.com/',
+        pathRewrite: { '^/maoyan': '' },
+        secure: true
       }
     }
   }

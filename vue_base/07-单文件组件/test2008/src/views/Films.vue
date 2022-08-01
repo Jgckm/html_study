@@ -5,15 +5,14 @@
                 <img :src="data.url" :alt="data.utag" >
             </films-swiper-item>
         </films-swiper>
-        <div>
-            二级声明式导航
-        </div>
+        <films-header></films-header>
         <router-view></router-view>
     </div>
 </template>
 <script>
 import filmsSwiper from '@/mycomponents/films/FilmsSwiper'
 import filmsSwiperItem from '@/mycomponents/films/FilmsSwiperItem'
+import filmsHeader from '@/mycomponents/films/FilmsHeader'
 import axios from 'axios'
 export default {
   data () {
@@ -32,7 +31,8 @@ export default {
   },
   components: {
     filmsSwiper,
-    filmsSwiperItem
+    filmsSwiperItem,
+    filmsHeader
   }
 }
 </script>

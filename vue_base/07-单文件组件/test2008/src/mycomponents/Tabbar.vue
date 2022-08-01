@@ -8,13 +8,22 @@
 
       <!-- vue-router 2 声明式导航 -->
       <router-link to="/films" custom v-slot="{ navigate, isActive }">
-        <li @click="navigate" :class="isActive ? 'jgckM' : ''">电影</li>
+        <li @click="navigate" :class="isActive ? 'jgckM' : ''">
+            <i class="fa fa-film" aria-hidden="true"></i>
+            <span>电影</span>
+            </li>
       </router-link>
       <router-link to="/cinemas" custom v-slot="{ navigate, isActive }">
-        <li @click="navigate" :class="isActive ? 'jgckM' : ''">影院</li>
+        <li @click="navigate" :class="isActive ? 'jgckM' : ''">
+            <i class="fa fa-university" aria-hidden="true"></i>
+            <span>影院</span>
+            </li>
       </router-link>
       <router-link to="/center" custom v-slot="{ navigate, isActive }">
-        <li @click="navigate" :class="isActive ? 'jgckM' : ''">我的</li>
+        <li @click="navigate" :class="isActive ? 'jgckM' : ''">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <span>我的</span>
+        </li>
       </router-link>
     </ul>
   </footer>
@@ -31,7 +40,15 @@ footer {
     li {
         flex: 1;
         text-align: center;
-        line-height: 2.7222rem;
+        line-height: 1.3889rem;
+        display: flex;
+        flex-direction: column;
+        i{
+            font-size: 20px;
+        }
+        span{
+            font-size: 16px;
+        }
     }
   }
 }

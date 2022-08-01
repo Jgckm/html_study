@@ -13,12 +13,6 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 export default {
-  props: {
-    loop: {
-      type: Boolean,
-      default: true
-    }
-  },
   mounted () {
     new Swiper('.swiper-container', {
       autoplay: {
@@ -26,7 +20,7 @@ export default {
         pauseOnMouseEnter: true, // 鼠标停放暂停自动播放
         disableOnInteraction: false // 如果设置为false，用户操作swiper之后自动切换不会停止，每次都会重新启动autoplay。
       },
-      loop: this.loop,
+      loop: true,
       // 如果需要分页器
       pagination: {
         el: '.swiper-pagination'
