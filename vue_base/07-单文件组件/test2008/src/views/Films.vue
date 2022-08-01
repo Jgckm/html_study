@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div style="background:gray;height:200px">大轮播</div>
+        <films-swiper></films-swiper>
         <div>
             二级声明式导航
         </div>

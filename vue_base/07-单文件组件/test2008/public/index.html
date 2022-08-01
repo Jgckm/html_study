@@ -8,7 +8,7 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
     <script>
       // fontsize 计算
-      document.documentElement.style.fontSize = '100px'
+      document.documentElement.style.fontSize = document.documentElement.clientWidth/375 * 18 +'px'
     </script>
   </head>
   <body>
