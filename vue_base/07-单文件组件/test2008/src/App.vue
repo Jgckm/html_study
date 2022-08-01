@@ -2,7 +2,9 @@
   <div>
     <tabbar></tabbar>
     <!-- 路由容器 -->
+    <section>
     <router-view></router-view>
+    </section>
   </div>
 </template>
 <script>
@@ -29,5 +31,7 @@ body{
 li{
     list-style: none;
 }
-
+section{
+  margin-bottom: 2.7222rem;
+}
 </style>

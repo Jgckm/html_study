@@ -6,7 +6,8 @@
                 <div >
                   <div class="title">{{data.nm}}</div>
                   <div>观众评 <span>{{data.mk}}</span></div>
-                  <div>主演:{{data.desc}}</div>
+                  <div class="actors">主演:{{data.desc}}</div>
+                  <div>{{data.showInfo}}</div>
                 </div>
             </li>
         </ul>
@@ -46,7 +47,7 @@ export default {
 <style lang="scss" scoped>
   ul {
     li{
-      padding: 5px;
+      padding: .5556rem;
       height: 5.5556rem;
       img{
         float: left;
@@ -57,6 +58,7 @@ export default {
       }
       div{
         color: #666;
+        font-size: 12px;
         span{
           color: red;
           font-weight: 900;
@@ -66,6 +68,12 @@ export default {
       .title{
         color: #333;
         font-size: 18px;
+      }
+      .actors{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 11.1111rem;
       }
     }
   }

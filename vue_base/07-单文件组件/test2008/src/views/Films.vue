@@ -5,7 +5,7 @@
                 <img :src="data.url" :alt="data.utag" >
             </films-swiper-item>
         </films-swiper>
-        <films-header></films-header>
+        <films-header class="sticky"></films-header>
         <router-view></router-view>
     </div>
 </template>
@@ -39,5 +39,10 @@ export default {
 <style lang="scss" scoped>
 img{
     width: 20.8333rem;
+}
+.sticky{
+    background: #fff;
+    position:sticky;
+    top: 0
 }
 </style>
