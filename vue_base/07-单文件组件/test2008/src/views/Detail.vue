@@ -16,9 +16,14 @@ export default {
     this.moiveId = this.$route.params.id
   },
   mounted () {
-    http.htppForList().then(
+    http.http({
+      url: `/gateway?filmId=${this.$route.params.id}&k=2867809`,
+      headers: {
+        'X-Host': 'mall.film-ticket.film.info'
+      }
+    }).then(
       (res) => {
-        console.log(res.data.data.film)
+        console.log(res.data.film)
       }
     )
   }

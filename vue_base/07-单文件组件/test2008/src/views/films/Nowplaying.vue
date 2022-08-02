@@ -28,14 +28,14 @@ export default {
     }
   },
   mounted () {
-    http({
-      url: '/gateway?cityId=110100&pageNum=1&pageSize=10&type=1&k=2546257',
+    http.http({
+      url: '/gateway?cityId=110100&pageNum=5&pageSize=10&type=1&k=2546257',
       headers: {
         'X-Host': 'mall.film-ticket.film.list'
       }
     }).then(res => {
-      console.log(res.data.data.films)
-      this.datalist = res.data.data.films
+      console.log(res.data.films)
+      this.datalist = res.data.films
     })
   },
   methods: {

@@ -27,12 +27,33 @@
 // 2.请求数据封装
 import axios from 'axios'
 const http = axios.create({
-  baseURL: 'https://m.maizuo.com',
-  timeout: 1000,
+  // 配置基础路径
+  baseURL: 'https://m.maizuo.com/',
+  timeout: 3000,
+  // 请求头
   headers: {
     'X-Client-Info': '{"a":"3000","ch":"1002","v":"5.2.0","e":"16593314392095394284634113","bc":"110100"}'
   }
 })
+
+// 配置拦截器
+http.interceptors.request.use(config => {
+  // 请求带token
+  /* config.headers.Authorization = window.sessionStorage.getItem('token') */
+  return config
+}, err => {
+  console.log('发生错误', err)
+})
+
+// 对应拦截器
+http.interceptors.response.use((res) => {
+  // 请求成功的回调函数
+  return res.data
+}, () => {
+  // 请求失败的回调函数
+
+})
+
 export default {
   http
 }
