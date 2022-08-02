@@ -1,5 +1,6 @@
 <template>
   <div v-if="filmInfo">
+    <detail-header></detail-header>
     <!-- <img :src="filmInfo.poster" alt=""> -->
     <div
       class="poster"
@@ -90,6 +91,7 @@ import http from '@/util/http'
 import momnet from 'moment' // 设置中文
 import Vue from 'vue'
 import detailSwiper from '@/mycomponents/detail/DetailSwiper'
+import detailHeader from '@/mycomponents/detail/DetailHeader'
 import detailSwiperItem from '@/mycomponents/detail/DetailSwiperItem'
 
 momnet.locale('zh-cn')
@@ -116,16 +118,16 @@ export default {
         }
       })
       .then((res) => {
-        console.log(res.data)
+        console.log(res)
         this.filmInfo = res.data.film
       })
   },
   mounted () {
-    window.onscroll = () => {
-      if (document.documentElement.scrollTop > 50) {
-        console.log(22)
-      }
-    }
+    // window.onscroll = () => {
+    //   if (document.documentElement.scrollTop > 50) {
+
+    //   }
+    // }
   },
   destroyed () {
     // 清空监听
@@ -133,7 +135,8 @@ export default {
   },
   components: {
     detailSwiper,
-    detailSwiperItem
+    detailSwiperItem,
+    detailHeader
   }
 }
 </script>

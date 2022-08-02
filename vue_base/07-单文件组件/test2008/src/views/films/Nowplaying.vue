@@ -34,7 +34,7 @@ export default {
         'X-Host': 'mall.film-ticket.film.list'
       }
     }).then(res => {
-      console.log(res.data.films)
+      console.log(res.data)
       this.datalist = res.data.films
     })
   },
