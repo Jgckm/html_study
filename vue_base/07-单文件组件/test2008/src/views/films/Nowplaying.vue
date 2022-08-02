@@ -1,29 +1,41 @@
 <template>
     <div>
         <ul>
-            <li @click="handleChangePage(data.videoId)" v-for="data in datalist" :key="data.videoId">
-              <img :src="data.img" alt="">
+            <li @click="handleChangePage(data.filmId)" v-for="data in datalist" :key="data.filmId">
+              <img :src="data.poster" alt="">
                 <div >
-                  <div class="title">{{data.nm}}</div>
-                  <div>观众评 <span>{{data.mk}}</span></div>
-                  <div class="actors">主演:{{data.desc}}</div>
-                  <div>{{data.showInfo}}</div>
+                  <div class="title">{{data.name}}</div>
+                  <div :class="data.grade ? '':'hidden'">观众评 <span>{{data.grade}}</span></div>
+                  <div class="actors">主演:{{data.actors | actorsFilter}}</div>
+                  <div>{{data.nation}} | {{data.runtime}}分钟</div>
                 </div>
             </li>
         </ul>
     </div>
 </template>
 <script>
-import axios from 'axios'
+import Vue from 'vue'
+import http from '@/util/http'
+
+Vue.filter('actorsFilter', (data) => {
+  if (data === undefined) return '暂无主演'
+  return data.map(item => item.name).join(' ')
+})
 export default {
   data () {
     return {
-      datalist: ['1111', '2222', '223333']
+      datalist: []
     }
   },
   mounted () {
-    axios.get('/maoyan/api/mmdb/movie/v3/list/hot.json?&ci=119&channelId=4').then(res => {
-      this.datalist = res.data.data.hot
+    http({
+      url: '/gateway?cityId=110100&pageNum=1&pageSize=10&type=1&k=2546257',
+      headers: {
+        'X-Host': 'mall.film-ticket.film.list'
+      }
+    }).then(res => {
+      console.log(res.data.data.films)
+      this.datalist = res.data.data.films
     })
   },
   methods: {
@@ -54,11 +66,12 @@ export default {
         width: 3.6667rem;
       }
       &>div{
-        margin-left: 3.8889rem;
+        margin: .3333rem 0;
+        margin-left: 4.1667rem;
       }
       div{
         color: #666;
-        font-size: 12px;
+        font-size: 13px;
         span{
           color: red;
           font-weight: 900;
@@ -76,5 +89,8 @@ export default {
         width: 11.1111rem;
       }
     }
+  }
+  .hidden{
+    visibility: hidden;
   }
 </style>

@@ -20,9 +20,14 @@ module.exports = {
         // 如果代理到HTTPS服务器需要设置secure为true，默认为false
         secure: true
       },
-      '/maoyan': {
-        target: 'https://i.maoyan.com/',
-        pathRewrite: { '^/maoyan': '' },
+      '/maizuo': {
+        target: 'https://m.maizuo.com/',
+        pathRewrite: { '^/maizuo': '' },
+        secure: true
+      },
+      '/detail': {
+        target: 'https://m.maizuo.com/',
+        pathRewrite: { '^/detail': '' },
         secure: true
       }
     }
