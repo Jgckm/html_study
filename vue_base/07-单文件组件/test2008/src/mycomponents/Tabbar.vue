@@ -30,6 +30,7 @@
 </template>
 <style lang="scss" scoped>
 footer {
+  z-index: 99999;
   width: 20.8333rem;
   position: fixed;
   bottom: -0.2778rem;
