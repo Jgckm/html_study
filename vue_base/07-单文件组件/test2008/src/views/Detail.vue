@@ -1,6 +1,8 @@
 <template>
   <div v-if="filmInfo">
-    <detail-header></detail-header>
+    <detail-header v-scroll="50">
+      {{filmInfo.name}}
+    </detail-header>
     <!-- <img :src="filmInfo.poster" alt=""> -->
     <div
       class="poster"
@@ -71,7 +73,7 @@
       <!-- 剧照 -->
       <div>
         <div class="actor-title">剧照</div>
-        <detail-swiper :perview="2.5" name="photos">
+        <detail-swiper :perview="2.4" name="photos">
           <detail-swiper-item
             v-for="(data, index) in filmInfo.photos"
             :key="index"
@@ -98,6 +100,24 @@ momnet.locale('zh-cn')
 Vue.filter('dataFilter', (data) => {
   return momnet(data * 1000).format('YYYY-MM-DD')
 })
+
+Vue.directive('scroll', {
+  inserted (el, binding) {
+    el.style.display = 'none'
+    window.onscroll = () => {
+      if ((document.documentElement.scrollTop || document.body.scrollTop) > binding.value) {
+        el.style.display = 'block'
+      } else {
+        el.style.display = 'none'
+      }
+    }
+  },
+  // 指令的生命周期
+  unbind () {
+    window.onscroll = null
+  }
+})
+
 export default {
   data () {
     return {
@@ -121,17 +141,6 @@ export default {
         console.log(res)
         this.filmInfo = res.data.film
       })
-  },
-  mounted () {
-    // window.onscroll = () => {
-    //   if (document.documentElement.scrollTop > 50) {
-
-    //   }
-    // }
-  },
-  destroyed () {
-    // 清空监听
-    window.onscroll = null
   },
   components: {
     detailSwiper,
