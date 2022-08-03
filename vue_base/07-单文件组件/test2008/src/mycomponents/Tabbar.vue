@@ -30,12 +30,12 @@
 </template>
 <style lang="scss" scoped>
 footer {
-  z-index: 99999;
-  width: 20.8333rem;
+  z-index: 2;
+  width: 100%;
+  height: 2.7222rem;
   position: fixed;
   bottom: -0.2778rem;
   left: 0;
-  height: 2.7222rem;
   ul {
     display: flex;
     background: #fff;

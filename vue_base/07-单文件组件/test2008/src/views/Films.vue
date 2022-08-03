@@ -1,6 +1,6 @@
 <template>
     <div>
-        <films-swiper key="datalist.length">
+        <films-swiper v-if="datalist" key="datalist.length">
             <films-swiper-item v-for="data in datalist" :key="data.id">
                 <img :src="data.url" :alt="data.utag" >
             </films-swiper-item>
@@ -17,7 +17,7 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      datalist: []
+      datalist: null
     }
   },
   mounted () {

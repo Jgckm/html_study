@@ -81,6 +81,7 @@
             <div
               class="photo"
               :style="'backgroundImage: url(' + data + ')'"
+              @click="handlePreview(index)"
             ></div>
           </detail-swiper-item>
         </detail-swiper>
@@ -95,6 +96,7 @@ import Vue from 'vue'
 import detailSwiper from '@/mycomponents/detail/DetailSwiper'
 import detailHeader from '@/mycomponents/detail/DetailHeader'
 import detailSwiperItem from '@/mycomponents/detail/DetailSwiperItem'
+import { ImagePreview } from 'vant'
 
 momnet.locale('zh-cn')
 Vue.filter('dataFilter', (data) => {
@@ -119,6 +121,16 @@ Vue.directive('scroll', {
 })
 
 export default {
+  methods: {
+    handlePreview (index) {
+      ImagePreview({
+        images: this.filmInfo.photos,
+        startPosition: index,
+        closeable: true,
+        closeIconPosition: 'bottom-right'
+      })
+    }
+  },
   data () {
     return {
       filmInfo: null,
