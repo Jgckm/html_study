@@ -1,6 +1,8 @@
 <template>
     <div>
-        <div class="box">
+        <div class="box" :style="{
+          height: height
+        }">
             <ul>
         <li v-for="data in cinemaList" :key="data.cinemaId">
             <div class="left">
@@ -21,10 +23,13 @@ import BetterScroll from 'better-scroll'
 export default {
   data () {
     return {
-      cinemaList: []
+      cinemaList: [],
+      height: '0px'
     }
   },
   mounted () {
+    // 动态结算高度
+    this.height = document.documentElement.clientHeight - document.querySelector('footer').offsetHeight + 'px'
     http.http({
       url: '/gateway?cityId=310100&ticketFlag=1&k=1348166',
       headers: {
@@ -32,9 +37,12 @@ export default {
       }
     }).then(res => {
       this.cinemaList = res.data.cinemas
-
       this.$nextTick(() => {
-        new BetterScroll('.box')
+        new BetterScroll('.box', {
+          scrollbar: {
+            fade: true
+          }
+        })
       })
     })
   }
@@ -62,7 +70,9 @@ export default {
         color: #797d82;
     }
     .box{
-        height:300px;
+        // height:34.3333rem;
         overflow: hidden;
+        position: relative;
+        // 修正滚动调的位置
     }
 </style>

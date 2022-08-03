@@ -11,8 +11,10 @@
     "axios": "^0.27.2",
     "better-scroll": "^2.4.2",
     "core-js": "^3.8.3",
+    "element-ui": "^2.15.9",
     "moment": "^2.29.4",
     "swiper": "^8.3.2",
+    "vant": "^3.5.3",
     "vue": "^2.6.14",
     "vue-router": "^3.5.1",
     "vuex": "^3.6.2"
