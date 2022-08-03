@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-nav-bar title="影院" ref="navbar">
+    <van-nav-bar title="影院" ref="navbar" @click-left="handleLeft">
       <template #right>
         <van-icon name="search" size="22" color="black" />
       </template>
@@ -54,7 +54,8 @@ export default {
         }
       })
       .then((res) => {
-        this.cinemaList = res.data.cinemas
+        this.cinemaList = res.data.data.cinemas
+        // 上树之后
         this.$nextTick(() => {
           new BetterScroll('.box', {
             scrollbar: {
@@ -63,6 +64,11 @@ export default {
           })
         })
       })
+  },
+  methods: {
+    handleLeft () {
+      this.$router.push('/city')
+    }
   }
 }
 </script>

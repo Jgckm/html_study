@@ -26,6 +26,8 @@
 
 // 2.请求数据封装
 import axios from 'axios'
+import { Toast } from 'vant'
+
 const http = axios.create({
   // 配置基础路径
   baseURL: 'https://m.maizuo.com/',
@@ -36,24 +38,32 @@ const http = axios.create({
   }
 })
 
-// 配置拦截器
-http.interceptors.request.use(config => {
-  // 请求带token
-  /* config.headers.Authorization = window.sessionStorage.getItem('token') */
+// Add a request interceptor
+http.interceptors.request.use(function (config) {
+  // Do something before request is sent
+  Toast.loading({
+    message: '加载中...',
+    forbidClick: true,
+    duration: 0
+  })
+
   return config
-}, err => {
-  console.log('发生错误', err)
+}, function (error) {
+  // Do something with request error
+  return Promise.reject(error)
 })
 
-// 对应拦截器
-http.interceptors.response.use((res) => {
-  // 请求成功的回调函数
-  return res.data
-}, () => {
-  // 请求失败的回调函数
-
+// Add a response interceptor
+http.interceptors.response.use(function (response) {
+  Toast.clear()
+  // Any status code that lie within the range of 2xx cause this function to trigger
+  // Do something with response data
+  return response
+}, function (error) {
+  // Any status codes that falls outside the range of 2xx cause this function to trigger
+  // Do something with response error
+  return Promise.reject(error)
 })
-
 export default {
   http
 }

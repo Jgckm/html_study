@@ -7,6 +7,7 @@ import Nowplaying from '@/views/films/Nowplaying'
 import Comingsoon from '@/views/films/Comingsoon'
 import Search from '@/views/Search'
 import Detail from '@/views/Detail'
+import City from '@/views/City'
 // import Order from '@/views/Order'
 import Login from '@/views/Login'
 
@@ -40,6 +41,10 @@ const routes = [
   {
     path: '/cinemas',
     component: Cinemas
+  },
+  {
+    path: '/city',
+    component: City
   },
   {
     path: '/cinemas/search',

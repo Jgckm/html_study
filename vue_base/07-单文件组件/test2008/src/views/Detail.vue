@@ -127,7 +127,8 @@ export default {
         images: this.filmInfo.photos,
         startPosition: index,
         closeable: true,
-        closeIconPosition: 'bottom-right'
+        closeIconPosition: 'bottom-right',
+        swipeDuration: 200
       })
     }
   },
@@ -151,7 +152,7 @@ export default {
       })
       .then((res) => {
         console.log(res)
-        this.filmInfo = res.data.film
+        this.filmInfo = res.data.data.film
       })
   },
   components: {

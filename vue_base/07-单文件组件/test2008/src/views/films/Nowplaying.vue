@@ -5,15 +5,15 @@
       :finished="finished"
       finished-text="我是有底线的"
       @load="onLoad"
-
+      :immediate-check='false'
     >
       <van-cell
         @click="handleChangePage(data.filmId)"
         v-for="data in datalist"
         :key="data.filmId"
       >
-        <img :src="data.poster" alt="" />
-        <div>
+        <img :src="data.poster" alt="" v-lazy="data.poster"/>
+        <div class="info">
           <div class="title">{{ data.name }}</div>
           <div :class="data.grade ? '' : 'hidden'">
             观众评 <span>{{ data.grade }}</span>
@@ -28,6 +28,9 @@
 <script>
 import Vue from 'vue'
 import http from '@/util/http'
+import { Lazyload } from 'vant'
+
+Vue.use(Lazyload)
 
 Vue.filter('actorsFilter', (data) => {
   if (data === undefined) return '暂无主演'
@@ -38,23 +41,47 @@ export default {
     return {
       datalist: [],
       loading: false,
-      finished: false
+      finished: false,
+      current: 1,
+      total: 0
     }
   },
   mounted () {
     http
       .http({
-        url: '/gateway?cityId=110100&pageNum=5&pageSize=10&type=1&k=2546257',
+        url: '/gateway?cityId=310100&pageNum=1&pageSize=10&type=1&k=2546257',
         headers: {
           'X-Host': 'mall.film-ticket.film.list'
         }
       })
       .then((res) => {
         console.log(res.data)
-        this.datalist = res.data.films
+        this.datalist = res.data.data.films
+        this.total = res.data.data.total
       })
   },
   methods: {
+    onLoad () {
+      // 总长度匹配，禁用懒加载
+      if (this.datalist.length === this.total && this.total !== 0) {
+        this.finished = true
+        return
+      }
+      console.log('到底了')
+      this.current++
+      http
+        .http({
+          url: `/gateway?cityId=310100&pageNum=${this.current}&pageSize=10&type=1&k=2546257`,
+          headers: {
+            'X-Host': 'mall.film-ticket.film.list'
+          }
+        })
+        .then((res) => {
+          // console.log(res.data)
+          this.datalist = [...this.datalist, ...res.data.data.films]
+          this.loading = false
+        })
+    },
     handleChangePage (id) {
       // 编程式导航
       //   location.href = `#/detail/${id}`
@@ -75,16 +102,17 @@ export default {
 <style lang="scss" scoped>
 .van-list {
   .van-cell {
+    display: flex;
     padding: 0.5556rem;
-    height: 5.5556rem;
-    & > div {
-      margin: 0.3333rem 0;
-      img {
-        float: left;
-        width: 3.6667rem;
-      }
+    height: 6.9444rem;
+    img{
+      float: left;
+      width: 3.6667rem;
+      height: auto;
     }
-    div {
+    .info {
+      float: left;
+      margin-left: .8333rem;
       color: #666;
       font-size: 13px;
       span {
