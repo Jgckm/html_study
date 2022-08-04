@@ -7,3 +7,6 @@
 5. `git log` 查看提交记录
 6. `git reset --hard HEAD^` 回退到上一个版本
 7. `git reflog` 操作记录
+8. `git reset --hard 前面六位版本号`
+9. `git pull origin master` 拉取远程仓库代码并且和本地代码合并
+10. `git push origin master` 往远程仓库提交代码
