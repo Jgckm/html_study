@@ -10,19 +10,19 @@
 <script>
 import axios from 'axios'
 export default {
-  data () {
-    return {
-      datalist: []
-    }
-  },
-  mounted () {
+    data () {
+        return {
+            datalist: []
+        }
+    },
+    mounted () {
     // fetch('/maizuo.json').then(res => res.json()).then(res => {
     //   this.datalist = res.data.films
     // })
-    axios.get('/maizuo.json').then(res => {
-      this.datalist = res.data.data.films
-    })
-  }
+        axios.get('/maizuo.json').then(res => {
+            this.datalist = res.data.data.films
+        })
+    }
 }
 </script>
 <style lang="scss" scoped>

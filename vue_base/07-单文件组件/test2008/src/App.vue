@@ -17,12 +17,12 @@ import 'vant/lib/index.css' // 全局定义的组件
 
 Vue.use(Vant)
 export default {
-  data () {
-    return {}
-  },
-  components: {
-    tabbar
-  }
+    data () {
+        return {}
+    },
+    components: {
+        tabbar
+    }
 }
 </script>
 <style lang="scss">

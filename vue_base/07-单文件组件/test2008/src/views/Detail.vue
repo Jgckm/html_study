@@ -100,66 +100,66 @@ import { ImagePreview } from 'vant'
 
 momnet.locale('zh-cn')
 Vue.filter('dataFilter', (data) => {
-  return momnet(data * 1000).format('YYYY-MM-DD')
+    return momnet(data * 1000).format('YYYY-MM-DD')
 })
 
 Vue.directive('scroll', {
-  inserted (el, binding) {
-    el.style.display = 'none'
-    window.onscroll = () => {
-      if ((document.documentElement.scrollTop || document.body.scrollTop) > binding.value) {
-        el.style.display = 'block'
-      } else {
+    inserted (el, binding) {
         el.style.display = 'none'
-      }
+        window.onscroll = () => {
+            if ((document.documentElement.scrollTop || document.body.scrollTop) > binding.value) {
+                el.style.display = 'block'
+            } else {
+                el.style.display = 'none'
+            }
+        }
+    },
+    // 指令的生命周期
+    unbind () {
+        window.onscroll = null
     }
-  },
-  // 指令的生命周期
-  unbind () {
-    window.onscroll = null
-  }
 })
 
 export default {
-  methods: {
-    handlePreview (index) {
-      ImagePreview({
-        images: this.filmInfo.photos,
-        startPosition: index,
-        closeable: true,
-        closeIconPosition: 'bottom-right',
-        swipeDuration: 200
-      })
-    }
-  },
-  data () {
-    return {
-      filmInfo: null,
-      hidden: true
-    }
-  },
-  created () {
-    // 当前匹配的路由
-    console.log('created', this.$route.params.id)
-    this.moiveId = this.$route.params.id
-
-    http
-      .http({
-        url: `/gateway?filmId=${this.$route.params.id}&k=2867809`,
-        headers: {
-          'X-Host': 'mall.film-ticket.film.info'
+    methods: {
+        handlePreview (index) {
+            ImagePreview({
+                images: this.filmInfo.photos,
+                startPosition: index,
+                closeable: true,
+                closeIconPosition: 'bottom-right',
+                swipeDuration: 200
+            })
         }
-      })
-      .then((res) => {
-        console.log(res)
-        this.filmInfo = res.data.data.film
-      })
-  },
-  components: {
-    detailSwiper,
-    detailSwiperItem,
-    detailHeader
-  }
+    },
+    data () {
+        return {
+            filmInfo: null,
+            hidden: true
+        }
+    },
+    created () {
+    // 当前匹配的路由
+        console.log('created', this.$route.params.id)
+        this.moiveId = this.$route.params.id
+
+        http
+            .http({
+                url: `/gateway?filmId=${this.$route.params.id}&k=2867809`,
+                headers: {
+                    'X-Host': 'mall.film-ticket.film.info'
+                }
+            })
+            .then((res) => {
+                console.log(res)
+                this.filmInfo = res.data.data.film
+            })
+    },
+    components: {
+        detailSwiper,
+        detailSwiperItem,
+        detailHeader
+    }
 }
 </script>
 <style lang="scss" scoped>

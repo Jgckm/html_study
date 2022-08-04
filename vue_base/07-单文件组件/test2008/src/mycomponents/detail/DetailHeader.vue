@@ -6,11 +6,11 @@
 </template>
 <script>
 export default {
-  methods: {
-    handleBack () {
-      this.$router.back() // 返回上一个页面
+    methods: {
+        handleBack () {
+            this.$router.back() // 返回上一个页面
+        }
     }
-  }
 }
 </script>
 <style lang="scss" scoped>

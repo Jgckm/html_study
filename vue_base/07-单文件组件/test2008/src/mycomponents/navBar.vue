@@ -8,21 +8,21 @@
 </template>
 <script>
 export default {
-  props: {
-    myname: {
-      type: String,
-      defuale: ''
+    props: {
+        myname: {
+            type: String,
+            defuale: ''
+        },
+        myright: {
+            type: Boolean,
+            defuale: true
+        }
     },
-    myright: {
-      type: Boolean,
-      defuale: true
+    methods: {
+        hanleLeft () {
+            this.$emit('event')
+        }
     }
-  },
-  methods: {
-    hanleLeft () {
-      this.$emit('event')
-    }
-  }
 
 }
 </script>
