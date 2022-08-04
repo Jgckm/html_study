@@ -21,6 +21,7 @@
 <script>
 import cinemasDataItem from '@/mycomponents/cinemas/cinemasDataItem'
 import BetterScroll from 'better-scroll'
+
 export default {
     components: {
         cinemasDataItem
@@ -30,6 +31,7 @@ export default {
             height: '0px'
         }
     },
+
     mounted () {
     // 动态结算高度
         this.height =
@@ -85,3 +87,31 @@ export default {
     }
 }
 </script>
+<style lang="scss" scoped>
+li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8333rem;
+    .name {
+        font-size: 15px;
+        color: #191a1b;
+    }
+}
+.left {
+    width: 13.8889rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.address {
+    font-size: 12px;
+    margin-top: 5px;
+    color: #797d82;
+}
+.box {
+    // height:34.3333rem;
+    overflow: hidden;
+    position: relative;
+    // 修正滚动调的位置
+}
+</style>

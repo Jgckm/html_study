@@ -14,7 +14,10 @@
 <script>
 import http from '@/util/http'
 import { Toast } from 'vant'
+import obj from '@/util/mixinsObj'
+
 export default {
+    mixins: [obj],
     data () {
         return {
             cityList: []

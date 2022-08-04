@@ -1,6 +1,6 @@
 <template>
     <ul>
-        <li v-for="data in $store.state.cinemasList" :key="data.cinemaId">
+        <li v-for="data in cinemasList" :key="data.cinemaId">
             <div class="left">
                 <div class="name">{{ data.name }}</div>
                 <span class="address">{{ data.address }}</span>
@@ -13,6 +13,18 @@
         </li>
     </ul>
 </template>
+<script>
+import { mapState, mapActions, mapMutations } from 'vuex'
+// mapState映射状态 mapActions映射方法 mapMutations映射 直接用 this 调用映射到本地的方法和属性
+export default {
+    computed: {
+        ...mapState(['cinemasList'])
+    },
+    methods: {
+        // ...mapMutations(['clearCinemaList'])
+    }
+}
+</script>
 <style lang="scss" scoped>
 li {
     display: flex;

@@ -8,7 +8,8 @@ export default new Vuex.Store({
     state: {
         cityId: '310100',
         cityName: '上海',
-        cinemasList: []
+        cinemasList: [],
+        isTabbarShow: true
     },
     // 支持异步和同步
     actions: {
@@ -40,6 +41,12 @@ export default new Vuex.Store({
         },
         clearCinemaList (state) {
             state.cinemasList = []
+        },
+        chageTabbrShow (state) {
+            state.isTabbarShow = true
+        },
+        chageTabbrHide (state) {
+            state.isTabbarShow = false
         }
     }
 })

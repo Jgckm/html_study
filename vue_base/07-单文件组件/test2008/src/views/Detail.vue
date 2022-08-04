@@ -97,6 +97,7 @@ import detailSwiper from '@/mycomponents/detail/DetailSwiper'
 import detailHeader from '@/mycomponents/detail/DetailHeader'
 import detailSwiperItem from '@/mycomponents/detail/DetailSwiperItem'
 import { ImagePreview } from 'vant'
+import obj from '@/util/mixinsObj'
 
 momnet.locale('zh-cn')
 Vue.filter('dataFilter', (data) => {
@@ -119,8 +120,8 @@ Vue.directive('scroll', {
         window.onscroll = null
     }
 })
-
 export default {
+    mixins: [obj],
     methods: {
         handlePreview (index) {
             ImagePreview({
@@ -138,7 +139,7 @@ export default {
             hidden: true
         }
     },
-    created () {
+    mounted () {
     // 当前匹配的路由
         console.log('created', this.$route.params.id)
         this.moiveId = this.$route.params.id

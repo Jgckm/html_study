@@ -6,6 +6,7 @@
             placeholder="请输入搜索关键词"
             @search="onSearch"
             @cancel="onCancel"
+            :autofocus='true'
         />
        <ul v-if="value">
         <li v-for="data in computedList" :key="data.cinemaId">
@@ -23,7 +24,9 @@
     </div>
 </template>
 <script>
+import obj from '@/util/mixinsObj'
 export default {
+    mixins: [obj], // 混合
     computed: {
         computedList () {
             return this.$store.state.cinemasList.filter(item => item.name.toUpperCase().includes(this.value.toUpperCase())) || this.$store.state.cinemasList.filter(item => item.address.toUpperCase().includes(this.value.toUpperCase()))
@@ -39,7 +42,7 @@ export default {
 
         },
         onCancel () {
-
+            this.$router.back()
         }
     },
     mounted () {
@@ -49,6 +52,7 @@ export default {
             console.log('缓存')
         }
     }
+
 }
 </script>
 <style lang="scss" scoped>
