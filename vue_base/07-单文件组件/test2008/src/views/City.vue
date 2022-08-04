@@ -104,6 +104,12 @@ export default {
             // vuex状态管理模式
             // this.$store.state.cityId = item.cityId
             // this.$store.state.cityName = item.name // 这样写无法跟踪
+
+            // 清空 cinemaList
+            this.$store.commit('clearCinemaList')
+
+            this.$store.commit('changeCityName', item.name)
+            this.$store.commit('changeCityId', item.cityId)
             this.$router.push('/cinemas')
         }
     }
