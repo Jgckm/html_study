@@ -72,7 +72,7 @@ cat [filename]	查看文件内容
 git reflog   	查看历史
 git reset --hard [版本号]	版本穿梭
 git remote add origin git@git.oschina.net:yourname/demo.git 	关联到远程仓库
-git pull origin master   提交到远程仓库
+git pull origin master   拉取远程仓库代码并且和本地代码合并
 ```
 
 ### Git忽略文件
