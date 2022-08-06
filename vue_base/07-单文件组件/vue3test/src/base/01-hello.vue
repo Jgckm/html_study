@@ -1,38 +1,34 @@
 <template>
     <div>
-        hello--- 新写法
-        {{myname}}
+        hello3--- 新写法
+        {{ myname }}
         <button @click="handleClick">change</button>
-        <input type="text" v-model="obj.mytext">
-        {{obj.mytext}}
+        <input type="text" v-model="obj.mytext" />
+        {{ obj.mytext }}
     </div>
 </template>
 <script>
-import { reactive } from '@vue/reactivity';
+import { reactive } from "@vue/reactivity";
 export default {
     // vue3老写法或者是vue 写法中 的 beforeCreate ，created 生命周期==== setup
-    data(){
+    
+    // 定义一个状态
+    setup() {
+        const obj = reactive({
+            myname: "nine",
+            myage: 100,
+            mytext: "",
+        });
+
+        // console.log('setup');
+        const handleClick = () => {
+            // console.log(111);
+            obj.mytext;
+        };
         return {
-            myname:'kerwin',
-        }
+            obj,
+            handleClick,
+        };
     },
-    beforeCreate(){
-        console.log('beforeCreate');
-    },
-    setup(){
-        console.log('setup');
-        const handleClick = ()=>{
-            console.log(111);
-        }
-        
-        // 定义一个状态
-       const obj = reactive({
-        mytext:''
-       })
-       return{
-        obj,
-        handleClick
-       }
-    }
-}
+};
 </script>
