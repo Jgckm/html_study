@@ -5,6 +5,7 @@ import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
+// 持久化 插件
 export default new Vuex.Store({
     plugins: [createPersistedState({
         reducer: (state) => {
