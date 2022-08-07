@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1.1-100之间所有数的平局值
+        var x = 0
+        for (var i = 1; i <= 100; i++) {
+            x += i
+        }
+        console.log(x / 100);
+
+
+        // 2.1-100之间所有偶数和奇数的和
+        var even = 0,
+            odd = 0;
+        for (var i = 1; i <= 100; i++) {
+            if (i % 2 == 0) {
+                even += i
+            } else {
+                odd += i
+            }
+        }
+        console.log('1-100奇数和为' + even);
+        console.log('1-100奇数和为' + odd);
+
+
+        // 求1-100能被3整除数的和
+        var num = 0
+        for (var i = 1; i <= 100; i++) {
+            if (i % 3 == 0) {
+                num += i
+            }
+        }
+        console.log('1-100能被三整除数的和' + num);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

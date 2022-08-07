@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. 利用 new Object() 创建对象
+        var obj = new Object();
+
+        // 2.利用 对象字面量创建对象
+        var obj2 = {}
+
+        // 3.利用构造函数创建对象
+        function Star(uname, age) {
+            this.uname = nume;
+            this.age = age;
+            this.sing = function() {
+                console.log('我会唱歌');
+            };
+        }
+        var ldh = new Star('李华', 34);
+        // 1.实例成员就是构造函数内部通过this 添加的成员 uname age sing 就是实例成员
+        // 实例成员只能通过实例化的对象访问
+        // 2.静态成员 在构造函数本身上添加的成员    sex 就是静态成员
+        Star.sex = '男';
+        // 静态成员只能通过构造函数来访问
+        console.log(Srar.sex);
+        console.log(ldh.sex); // 不能通过
+    </script>
+</body>
+
+</html>

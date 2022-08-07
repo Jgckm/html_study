@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 利用对象封装自己的数学对象   里面有PI 最大值 和 最小值
+        var myMath = {
+                PI: 3.141592653,
+                max: function() {
+                    max = arguments[0]
+                    for (var i = 1; i < arguments.length; i++) {
+                        if (max < arguments[i]) {
+                            max = arguments[i]
+                        }
+                    }
+                    return max
+                },
+                min: function() {
+                    min = arguments[0];
+                    for (var j = 1; j < arguments.length; j++) {
+                        if (min > arguments[j]) {
+                            min = arguments[j];
+                        }
+                    }
+                    return min
+                }
+            }
+            // 要用    ！！冒号！！！
+        console.log(myMath.PI);
+        console.log(myMath.min(12, 343, 45, 23, 231, 23, 35, 32, 5555));
+        console.log(myMath.max(2, 2, 3, 5455));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // let 声明的变量只在处于块级有效
+            let ab = 10;
+            console.log(a);
+            // let 声明变量
+            let abc = 0;
+            let a;
+            let e = 100;
+            // let 声明的变量具有块级作用域
+
+            // 1.变量不能重复声明
+            // let star = 'lfh';
+            // let star = 'sdjk';
+
+            // 2.块级作用域     ES5 中的块级作用域 全局 函数 eval
+            // if else while for
+            // {
+            //     let girl = 'aisho ';
+            // }
+            // console.log(girl);
+
+            // 3.不存在变量提升
+            // console.log(song);
+            // // var song = '函数'; // 不会报错
+            // let song = '你是'; // 会报错
+
+            // 4.不影响作用域
+            {
+                let school = '实例化';
+                function fn() {
+                    console.log(school);
+                }
+                fn();
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // var answer = prompt('输入你的年龄')
+        // console.log(parseInt(answer));      //parseInt(变量) 可以把字符型的转换为数字型 但是转换的结果为 整数
+        console.log(parseInt('3.14'));     // 装换为整数 结果为 3
+        console.log(parseInt('122px是华塑开收据'));      // 可以提取字符型里面的数字 转换为数字型 结果取整 前面不能有东西
+        console.log(parseInt('rem122'));   // 前面有字符型不可以转换为数字型
+
+        // 2.parseFloat(变量) 将字符型转换为数字型  结果可以显示小数
+        console.log(parseFloat('3.14'))  // 3.14 
+        console.log(parseFloat('120px'));  // 后面有字符新不会影响转化   
+        console.log(parseFloat('a3.1558pa'));   //前面有子符型不可以转换为数字型
+
+        // 3.Number(变量)
+        console.log('Number转换结果', Number('12344'));
+
+        // 4.利用算数符 - *  /  隐式转换
+        console.log('用 - 符号转换', '12' - 0);
+        console.log('用 * 符号转换', '12' * 1);
+        console.log('用 / 符号转换', '12' / 1);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

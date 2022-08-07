@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 思考题1：
+            var name = 'The Window';
+            var object = {
+                name: 'My Object',
+                getNameFun: function () {
+                    return function () {
+                        return this.name;
+                    };
+                },
+            };
+            console.log(object.getNameFun()());
+            // 可以拆分为
+            // var f = getNameFun();
+            // var f = function () {
+            //     return this.name;
+            // };
+            // f();
+
+            // 思考题2
+            var name = 'The Window';
+            var object = {
+                name: 'My Object',
+                getNameFun: function () {
+                    var that = this; // 这里的this 指向的是函数调用者  this = object  并且赋值给 that
+                    return function () {
+                        return that.name; // 这里 that 是 object对象 调用了 object 的 name属性 最后返回
+                    };
+                },
+            };
+            console.log(object.getNameFun()());
+            // 拆分
+            // var f = object.getNameFun();
+            // var f = function () {
+            //     return that.name;
+            // };
+            // f();
+        </script>
+    </body>
+</html>

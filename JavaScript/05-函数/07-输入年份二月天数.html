@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 判断闰年
+        function isYunYear(year) {
+            if (year % 4 == 0 && year != 0 || year % 400 == 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function day(year) {
+            var is = isYunYear(year)
+            if (is) {
+                alert(year + '年2月有29天')
+            } else {
+                alert(year + '年2月有28天')
+            }
+        }
+        var year = prompt('请输入年份：')
+        day(year)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 格式化日期年月日
+        var date = new Date();
+        console.log(date.getFullYear()); //但会当前日期的年
+        console.log(date.getMonth()); // 返回 的月份小1个月 记得 +1
+        console.log(date.getDate()); // 返回的是几号
+        console.log(date.getDay()); //  周一返回1 周六返回 6  周日返回 0
+
+        // 写一个个是为  2018年 12月 1日 星期日
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1; // 注意月份要+1
+        var arr = ['日', '一', '二', '三', '四', '五', '六']
+        var day = date.getDay();
+        console.log('今天是：' + year + '年' + month + '月' + day + '日' + '星期' + arr[day]);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

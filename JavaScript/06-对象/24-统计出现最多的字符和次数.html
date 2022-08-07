@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 有一个对象   来判断是否有这个属性        对象名['属性值']
+        // var o = {
+        //     age: 18,
+        // }
+        // if (o['age']) {
+        //     console.log('里面又该属性');
+        // } else {
+        //     console.log('里面没有该属性');
+        // }
+        var str = 'ajkwshahssfwhasssssoasissiiissfaiishw';
+        var o = {};
+        for (var i = 0; i < str.length; i++) {
+            var chars = str.charAt(i); // 是字符串的每一个字符
+            if (o[chars]) {
+                o[chars]++;
+            } else {
+                o[chars] = 1;
+            }
+        }
+        console.log(o);
+        // 遍历对象
+        var num = 0;
+        var ch = '';
+        for (var k in o) { // k得到的是属性名  想要得到属性值  o[k]
+            if (o[k] > num) {
+                num = o[k]
+                ch = k;
+            }
+        }
+        console.log(k, num);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

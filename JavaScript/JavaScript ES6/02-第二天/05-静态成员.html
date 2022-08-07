@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // function Phone() {
+            //     this.name = '手机';
+            // }
+
+            // Phone.call = function () {
+            //     console.log('我是静态方法');
+            // };
+            // Phone.prototype.size = '2.2inch';
+
+            // let nokia = new Phone();
+
+            // console.log(nokia.name);
+
+            class Phone {
+                // 静态成员
+                static app = '手机';
+                // 简单来说静态成员就是类的属性而不是实例对象的属性
+                fn = function () {
+                    console.log(this);
+                };
+            }
+            let p = new Phone();
+            console.log(Phone.app);
+        </script>
+    </body>
+</html>

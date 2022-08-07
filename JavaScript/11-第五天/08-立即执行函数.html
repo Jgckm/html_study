@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 立即执行函数：不需要调用 能够立即执行的函数
+        // 写法
+        // (function() {})()  或 (function(){}())
+        (function() {
+            console.log(2);
+        })(); // 第二个小括号可以看做是调用函数 立即函数后面要加分号 避免报错
+        (function(a, b) {
+            console.log(a + b);
+        })(1, 3)
+        // 最大的作用是 创建了独立的作用域 里面的所有变量都是局部变量 不会会有命名冲突的现象
+    </script>
+</body>
+
+</html>

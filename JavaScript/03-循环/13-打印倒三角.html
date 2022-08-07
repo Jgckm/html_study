@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 用户输入行数
+        var rows = prompt('请输入行数：');
+        // 用户输入列数
+        var colom = prompt('请输入列数：');
+        // 第一种方法
+        var str = '';
+        // for (var i = colom; i >= 1; i--) {
+        //     // 打印列
+        //     for (var j = 1; j <= i; j++) {
+        //         str += '★'
+        //     }
+        //     str += '\n'
+        // }
+        // console.log(str);
+
+
+        // 第二种方法
+        for (var i = 1; i <= rows; i++) {
+            for (var j = i; j <= colom; j++) {
+                str += '★'
+            }
+            str += '\n'
+        }
+        console.log(str);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

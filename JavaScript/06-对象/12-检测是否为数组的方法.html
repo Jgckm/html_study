@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 翻转数组
+        function reverse(arr) {
+            if (arr instanceof Array) {
+                var newArr = []
+                for (var i = 0; i < arr.length; i++) {
+                    newArr[newArr.length] = arr[i]
+                }
+                return newArr
+            } else {
+                return '数据不是数组类型';
+            }
+        }
+        console.log(reverse([1, 23, 34, 4, 53]));
+        // 1.检测是否为数组   instanceof    运算符 可以检测是否为数组
+        var arr = [];
+        var obj = {};
+        console.log(arr instanceof Array);
+        console.log(obj instanceof Array);
+
+        // 2.Array.isArray(参数); H5里面新增的方法
+        console.log(Array.isArray(arr));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

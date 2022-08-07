@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="index.html">我去跳转inedx</a>
+    <button>后退</button>
+    <script>
+        var btn = document.querySelector('button')
+        btn.addEventListener('click', function() {
+            // history.back()
+            history.go(-1) // 后退一步
+        })
+    </script>
+</body>
+
+</html>

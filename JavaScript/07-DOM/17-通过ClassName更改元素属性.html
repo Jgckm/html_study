@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        
+        .change {
+            background-color: red;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="first">文本</div>
+    <script>
+        // 1.使用   element.style 获取元素样式
+        var test = document.querySelector('div');
+        test.onclick = function() {
+            // this.style.backgroundColor = 'red'
+            // 让当前的类名更改为change
+
+            // 2.可以通过修改 className更改元素样式     适用于样式复杂的情况
+            // this.className = 'change';
+            // 3.保留原来的 类名
+            this.className = 'first change'
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        console.log(location.search);
+        // 1.先去掉 ?   substr(从第几个字符截取,不填默认截取到最后，填写截取到哪个字符)
+        var params = location.search.substr(1);
+        var arr = params.split('=')
+        var div = document.querySelector('div')
+        div.innerHTML = arr[1] + '你好'
+    </script>
+</body>
+
+</html>

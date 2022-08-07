@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            class Person {
+                static [Symbol.hasInstance](param) {
+                    console.log(param);
+                    console.log('我被用来检测了');
+                    return false;
+                }
+            }
+            let o = {};
+            console.log(o instanceof Person); //  当 instanceof 出现是就自动调用 hasInstance这个无需调用
+        </script>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 常用键盘事件 -->
+    <!-- 1.keyup 键盘弹起的时候 -->
+    <script>
+        document.addEventListener('keyup', function(e) {
+                console.log(1, e.key);
+            })
+            // 2.keydown 键盘按下的时候触发
+        document.addEventListener('keydown', function(e) {
+                console.log(2, e.key);
+            })
+            // 3.keypress 按键按下的时候触发    (不能识别功能键)
+        document.addEventListener('keypress', function(e) {
+            console.log(3, e.key);
+        })
+    </script>
+</body>
+
+</html>

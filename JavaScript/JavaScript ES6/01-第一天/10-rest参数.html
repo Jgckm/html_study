@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // ES6 引入 rest 参数   用于获取函数实参    arguments
+            // function date() {
+            //     console.log(arguments);
+            // }
+            // date('黏糊糊', '按时', '快手', '抖音');
+
+            // rest 参数
+            // function date(...args) {
+            //     console.log(args);
+            // }
+            // date('niha', 'lakshl ', 'akhsdhal', 'jahs ');
+            // rest 参数必须放在参数后面
+            function fn(a, b, ...arge) {
+                console.log(a);
+                console.log(b);
+                console.log(arge);
+            }
+            fn(1, 2, 3, 45, 5, 6);
+        </script>
+    </body>
+</html>

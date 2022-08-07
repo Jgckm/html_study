@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1.构造函数       泛指大类    类似Java 语言的类  (class)
+        function Fu(uname, age, sex) {
+            this.uname = uname;
+            this.age = age;
+            this.sayHi = function() {
+                console.log('Hi');
+            }
+
+        }
+        // 2.对象是一个客观存在的事物   刘德华 == {uname: '刘德华', age: 65, sayHi: ƒ}
+        var ldh = new Fu('刘德华', 65, '男'); // 调用函数返回的是一个对象
+        console.log(ldh);
+        // 3.利用构造函数创建对象的过程叫做实例化
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

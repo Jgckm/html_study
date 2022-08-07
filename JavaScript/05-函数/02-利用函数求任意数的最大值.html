@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 求任意个数的最大值
+        function getMax() {
+            for (let index = 0; index < arguments.length; index++) {
+                var num = arguments[0];
+                var num1 = arguments[index]
+                if (num < num1) {
+                    num = arguments[index]
+                }
+            }
+            return num
+        }
+        var max = getMax(1, 0, 3, 45, 6, 7, 78, 89, 4, 45, 2, 32, 545359)
+        console.log(max);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

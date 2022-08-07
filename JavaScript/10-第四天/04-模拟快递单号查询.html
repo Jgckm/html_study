@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟快递单号查询</title>
+    <style>
+        .search {
+            position: relative;
+            width: 178px;
+            margin: 100px;
+        }
+        
+        .con {
+            display: none;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            position: absolute;
+            top: -53px;
+            width: 171px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, .2);
+            padding: 10px 0;
+            padding-left: 5px;
+        }
+        
+        .con::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 41px;
+            left: 30px;
+            border: 8px solid #000;
+            border-style: solid dashed dashed;
+            border-color: #fff transparent transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search">
+        <div class="con"></div>
+        <input type="text" placeholder="请输入快递单号" name="" id="">
+    </div>
+
+    <script>
+        var con = document.querySelector('.con');
+        var input = document.querySelector('input');
+
+        input.addEventListener('keyup', function() {
+
+            if (!this.value == '') {
+                con.style.display = 'block'
+                con.innerText = input.value
+            } else {
+                con.style.display = 'none'
+
+            }
+
+        })
+        input.addEventListener('blur', function() {
+            con.style.display = 'none'
+        })
+        input.addEventListener('focus', function() {
+            if (!this.value == '') {
+                con.style.display = 'block'
+            }
+        })
+    </script>
+</body>
+
+</html>

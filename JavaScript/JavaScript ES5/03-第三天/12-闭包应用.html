@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <ul class="nav">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <script>
+            // 1.利用动态添加属性的方式
+            var nav = document.querySelector('.nav');
+            var lis = nav.querySelectorAll('li');
+            // var index = 0;
+            // lis.forEach(li => {
+            //     li.index = index;
+            //     index++;
+            //     li.addEventListener('click', function () {
+            //         console.log(this.index);
+            //     });
+            // });
+
+            // 2.利用闭包的方式得到当前小li 的索引号        // 创建立即执行函数
+            // 立即执行函数也成为小闭包因为立即执行函数里面的任何一个函数都可以使用它的 i 这个变量
+            for (var i = 0; i < lis.length; i++) {
+                (function (i) {
+                    lis[i].onclick = function () {
+                        console.log(i);
+                    };
+                })(i);
+            }
+        </script>
+    </body>
+</html>

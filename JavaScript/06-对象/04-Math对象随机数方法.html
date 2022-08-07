@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1.Math对象随机数方法  random()   返回的是一个随机的小数    0 =< x < 1
+        // 2.这里面不跟参数 
+        console.log(Math.random());
+
+        // 3. 得到一个两数之间的随机整数，包括两个数在内
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min; //含最大值，含最小值 
+        }
+        console.log(getRandom(3, 65));
+        // 4. 随机点名
+        var arr = ['张三', '李四', 'w顽固', 'qwer'];
+        var num = getRandom(0, arr.length - 1);
+        console.log(arr[num]);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

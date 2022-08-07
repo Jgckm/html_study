@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <button>显示当前系统时间</button>
+    <div>某个时间</div>
+    <p>123</p>
+    <script>
+        // 当我们点击了div 按钮div的文字发生了变化
+        // 1.获取元素
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+        // 2.注册事件
+        btn.onclick = function() {
+            div.innerText = getTime();
+        }
+
+        function getTime() {
+            var date = new Date();
+            // 写一个个是为  2018年 12月 1日 星期日
+            var year = date.getFullYear();
+            var month = date.getMonth(); + 1; // 注意月份要+1
+            var arr = ['日', '一', '二', '三', '四', '五', '六']
+            var day = date.getDay();
+            // console.log('今天是：' + year + '年' + month + '月' + day + '日' + '星期' + arr[day]);
+            return '今天是：' + year + '年' + month + '月' + day + '日' + '星期' + arr[day];
+        }
+        // 元素可以不添加事件
+        var p = document.querySelector('p');
+        p.innerText = getTime();
+    </script>
+</body>
+
+</html>

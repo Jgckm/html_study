@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>18-鼠标事件对象.html</title>
+    <style>
+        body {
+            height: 1300px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        document.addEventListener('click', function(e) {
+            // 1. client 鼠标可视区的X和Y坐标
+            console.log(e.clientX, e.clientY);
+
+            // 2. page 鼠标页面文档的X和Y坐标
+            console.log(e.pageX, e.pageY);
+
+            // 3.鼠标在电脑屏幕的x和y坐标
+            console.log(e.screenX, e.screenY);
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 生成器函数其实是一个特殊函数
+            // 异步编程 纯回调函数  node ajax mongodb
+            function* gen() {
+                yield '我是四四';
+                // console.log(111);
+                yield 'niaho啊';
+                // console.log(222);
+                yield '你好啊';
+                // console.log(333);
+            }
+            let iterator = gen();
+            console.log(iterator.next()); // next()的返回结果是一个对象 里面包含了 value 和 done
+            console.log(iterator.next());
+            console.log(iterator.next());
+            console.log(iterator.next());
+
+            // 遍历
+            // for (let v of gen()) {
+            //     console.log(v);
+            // }
+        </script>
+    </body>
+</html>

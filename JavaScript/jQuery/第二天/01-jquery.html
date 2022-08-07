@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+</head>
+
+<body>
+    <a href="http://www.baidu.com" title="沾化">；俺就； </a>
+    <input type="checkbox" checked>
+    <script>
+        $(function() {
+            // console.log($('a').prop('href'));
+            // $('a').prop('href')  获取属性值
+            var bool = $('input').prop('checked')
+            console.log(bool);
+        })
+    </script>
+</body>
+
+</html>

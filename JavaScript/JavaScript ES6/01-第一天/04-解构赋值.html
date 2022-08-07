@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // CS6 允许按照一定的模式从数组和对象中提取值，对变量进行赋值
+            // 这被称之为解构赋值
+            // 1.数组的结构
+            // const F4 = ['你好', '张三', '历史', '物理'];
+            // let [ni, zhang, li, wu] = F4;
+            // console.log(ni);
+            // console.log(zhang);
+            // console.log(li);
+            // console.log(wu);
+
+            // 2.对象的解构
+            const zhao = {
+                name: 'niihi',
+                age: '不详',
+                xiaopin: function () {
+                    console.log('小品');
+                },
+            };
+
+            // let { name, age, xiaopin } = zhao;
+            // console.log(name);
+            // console.log(age);
+            // console.log(xiaopin);
+            let { xiaopin } = zhao;
+            xiaopin();
+        </script>
+    </body>
+</html>

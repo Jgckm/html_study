@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            transition: all 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        // 1.获取元素
+        var div = document.querySelector('div');
+        // 2.注册事件 处理程序
+        // div.style 使用的是驼峰命名法
+        // js 修改 style 样式操作   产生的是行内样式    css的权重比较高
+        div.onclick = function() {
+            this.style.backgroundColor = 'green';
+            this.style.width = '300px'
+        }
+    </script>
+</body>
+
+</html>
+
+</html>

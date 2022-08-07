@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 利用递归 函数求 1~ n 的阶乘
+
+            function fn(n) {
+                if (n == 1) {
+                    return 1;
+                }
+                return n * fn(n - 1);
+            }
+            var num = fn(5);
+            console.log(num);
+
+            // 详细思路 n= 3
+            // return 3 * fn(2)
+            // return 3 * (2 * fn(1))
+            // return 3 * (2 * 1)
+            // return 3 * 2
+            // return 6
+        </script>
+    </body>
+</html>

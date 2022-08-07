@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+    <p>
+        我是文字
+        <span>qwe</span>
+    </p>
+    <script>
+        // innerText 和 innerHTML的区别
+        // 1.innerText  不识别HTML标签  非标准  可以去除空格和换行
+        var div = document.querySelector('div');
+        div.innerText = '<strong>想要加粗</strong>';
+        // 2.innerHTML 识别HTML  W3C标准    保留空格和换行的
+        div.innerHTML = '<strong>想要加粗</strong>';
+        // 这两个元素是可读写的 可以获取元素里面的内容
+        var p = document.querySelector('p');
+        console.log(p.innerText);
+        console.log(p.innerHTML);
+    </script>
+</body>
+
+</html>

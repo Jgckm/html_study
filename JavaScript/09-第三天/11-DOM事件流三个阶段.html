@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11-DOM事件流三个阶段</title>
+    <style>
+        body {
+            width: 1000px;
+            height: 1000px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .father {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            background-color: pink;
+        }
+        
+        .son {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            background-color: skyblue;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son">son盒子</div>
+    </div>
+    <script>
+        // DOM 事件流 三个阶段
+        // 1. JS 代码中只能执行驳货或者冒泡其中的阶段
+        // 2. onclick 和 attachEvent (ie) 只能得到冒泡阶段
+        // 3. 捕获阶段 如果 addEventListener 第三个参数是 true 那么则处于捕获阶段 document -> html -> body -> father - son
+        // var son = document.querySelector('.son');
+        // son.addEventListener('click', function() {
+        //     alert('son')
+        // }, true)
+        // var father = document.querySelector('.father');
+        // father.addEventListener('click', function() {
+        //     alert('father')
+        // }, true)
+
+        // 冒泡阶段 如果 addEventListener 第三个参数是 false 或者 省略 那么就处于冒泡阶段 son -> father -> body -> html -> document
+        var son = document.querySelector('.son');
+        son.addEventListener('click', function() {
+            alert('son')
+        }, false)
+        var father = document.querySelector('.father');
+        father.addEventListener('click', function() {
+            alert('father')
+        }, false)
+    </script>
+</body>
+
+</html>

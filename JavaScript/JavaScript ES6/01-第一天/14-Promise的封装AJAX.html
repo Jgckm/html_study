@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <video src=""></video>
+        <script>
+            let p = new Promise((resolve, reject) => {
+                // 创建对象
+                let request = new XMLHttpRequest();
+
+                request.open('GET', 'https://api.apiopen.top/api/getHaoKanVideo?page=2&size=2'); // 方法和 url
+                request.onreadystatechange = function () {
+                    // readyState 响应状 status
+                    if (request.readyState === 4) {
+                        if (request.status >= 200 && request.status <= 300) {
+                            let video = JSON.parse(request.response).result;
+                            resolve(video);
+                        } else {
+                            reject(request.status);
+                        }
+                    }
+                };
+                request.send(); // 发送请求
+            });
+
+            p.then(
+                function (value) {
+                    console.log(value);
+                },
+                function (reason) {
+                    console.error(reason);
+                }
+            );
+        </script>
+    </body>
+</html>

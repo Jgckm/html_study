@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1.求任意两个数的和
+        function getSum(sum1, sum2) {
+            var result = parseFloat(sum1) + parseFloat(sum2);
+            console.log(result);
+        }
+        // var one = prompt('请输入第一个数字:')
+        // var twe = prompt('请输入第二个数字:')
+        // getSum(one, twe)
+
+        // 2.利用函数求两个数之间的和
+
+
+        function getSums(start, end) {
+            var num = 0;
+            for (var i = start; i <= end; i++) {
+                num += i
+            }
+            console.log(num);
+        }
+        getSums(1, 100)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1.逻辑与短路运算
+        console.log(123 && 456); // 如果 表达式1 为真 则返回 表达式2 后面不再执行
+        console.log(0 && 234235);
+        console.log('' && 123); // 如果 表达式1 为False 则返回表达1的值
+        // 如果有空或这否定的为假   其余都是真 0 '' null undefined  NaN
+        // 2.逻辑或短路运算     
+        console.log(123 || 456); // 123 
+        console.log(0 || 456 || 45 + 44); //456
+        console.log(0 || 456 || 45 + 44 || 33 + 3); //456
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1.打印一个人 1-100岁
+        var year = 1;
+        do {
+            console.log('今年' + year + '岁了');
+            year++
+        } while (year <= 100);
+
+        // 2.计算 1-100之间的和
+        var x = 0;
+        var num = 1;
+        do {
+            x += num
+            num++
+        } while (num <= 100);
+        console.log(x);
+
+        // 3.弹出提示框，你爱我吗？     如果输入我爱你，就结束，否则，一直询问
+        do {
+            var answer = prompt('你爱我吗？')
+        } while (answer != '我爱你');
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            margin: 100px auto;
+        }
+        
+        ul {
+            width: 300px;
+            height: 175px;
+        }
+        
+        ul li {
+            list-style: none;
+            width: 22px;
+            height: 22px;
+            background-image: url(images/sprite.png);
+            background-size: 22px auto;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        // 1.获取元素   获取所有的 li 
+        var lis = document.querySelectorAll('li');
+        for (var i = 0; i < lis.length; i++) {
+            var index = i * 22
+            lis[i].style.backgroundPosition = '0 -' + index + 'px';
+        }
+    </script>
+</body>
+
+</html>

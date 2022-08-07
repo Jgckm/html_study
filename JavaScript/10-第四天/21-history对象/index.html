@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="list.html">我去跳转list</a>
+    <button>前进</button>
+    <script>
+        var btn = document.querySelector('button')
+        btn.addEventListener('click', function() {
+            // history.forward() // 前提是要有历史记录
+            history.go(1) // go(1) 是前进一步 2 就是前进两步 
+        })
+    </script>
+</body>
+
+</html>

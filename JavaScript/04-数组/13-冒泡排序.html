@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var arr = [5, 3, 2, 4, 1]
+        var newArr = []
+        var temp;
+        for (var i = 0; i < arr.length - 1; i++) { // 外层循环管 趟数 一共4趟
+            for (var j = 0; j < arr.length - i - 1; j++) { // 内层循环管 每层交换次数 
+                // 内部交换两个变 量值  前一个和后面一个数组元素相比较
+                if (arr[j] > arr[j + 1]) {
+                    trmp = arr[j + 1]; // 原先的arr[i] = 5  把5 存放个trmp 临时变量
+                    arr[j + 1] = arr[j]; // 把arr[j] = 5  arr[i] 就可以赋给新的值
+                    arr[j] = trmp; // 
+                }
+            }
+        }
+        console.log(arr);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

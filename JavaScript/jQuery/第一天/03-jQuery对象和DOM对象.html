@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <span></span>
+    <script>
+        // 1. DOM 对象： 用原生js 获取过来的就是DOM对象
+        var myDiv = document.querySelector('div');
+        var myspan = document.querySelector('span');
+        console.log(myDiv);
+        // 2.jQuery 对象：用于jQuery获取的jQuery对象。本质：通过$把DOM元素进行了包装
+        $('div'); // $('div'); 是一个jQuery对象方法 DOM 则使用的是 JavaScript 属性和方法
+        $('span'); // $('span'); 是一个jQuery对象方法 DOM 则使用的是 JavaScript 属性和方法
+
+        // 3.jQuery 对象只能使用 jQuery方法 则DOM对象则使用 JavaScript 属性和方法
+        // myDiv.style.display = 'none';
+        // $('div').style.display = 'none';  $('div')是jQuery对象 不能使用 JavaScript 原生的属性和方法
+    </script>
+</body>
+
+</html>

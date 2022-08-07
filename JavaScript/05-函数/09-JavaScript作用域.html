@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1.javascript的作用域 就是在代码名字在某个范围内起的作用和效果  目的是为了程序的可靠性 更重要的是减少命名冲突
+        // 2.js作用域（es6）之前： 全局作用域   局部作用域
+        // 3.全局作用域：   整个script标签
+        var num = 0;
+        // 4.局部作用域（函数作用域）：在函数内部作用 这个代码名字只在函数的内部起效果和作用
+        function name(params) {
+            // 局部作用域
+            var num = 0; // 不会和上面的冲突
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 利用函数冒泡排序
+        function sort(arr) {
+            for (var i = 0; i < arr.length - 1; i++) {
+                for (var j = 0; j < arr.length - i - 1; j++) {
+                    var temp;
+                    if (arr[j] > arr[j + 1]) {
+                        temp = arr[j]
+                        arr[j] = arr[j + 1]
+                        arr[j + 1] = temp
+                    }
+                }
+            }
+            return arr
+        }
+
+        var arr1 = [664, 546, 23, 234, 134, 33, 346, 3, 46, 364, 3, 2, 35, 4, 254, 6, 5, 7547664, 546, 23, 234, 134, 33, 346, 3, 46, 364, 3, 2, 35, 4, 254, 6, 5, 7547]
+        var result = sort(arr1)
+        console.log(result);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

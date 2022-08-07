@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            span {
+                color: #aaa;
+                font-size: 14px;
+            }
+            .right {
+                color: green;
+            }
+            .wrong {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="text" class="uname" />
+        <span>请输入用户名</span>
+        <script>
+            //  量词是设定某个模式出现的次数
+            var reg = /^[a-zA-Z0-9_-]{6,16}$/;
+            // 界符和 [] 这个限制定了 只能多选1
+            var input = document.querySelector('.uname');
+            var span = document.querySelector('span');
+            input.addEventListener('blur', function () {
+                if (reg.test(this.value)) {
+                    span.className = 'right';
+                    span.innerHTML = '输入正确';
+                } else {
+                    span.className = 'wrong';
+                    span.innerHTML = '请输入a-zA-Z0-9_- 等 6-16个字符';
+                }
+            });
+        </script>
+    </body>
+</html>

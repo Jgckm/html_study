@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 猜数字游戏
+        function getRadon(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min; //含最大值，含最小值 
+        }
+        num = getRadon(1, 10);
+        while (true) {
+            var answer = prompt('你来猜，输入1-100之间的数字:')
+            if (answer == num) {
+                alert('猜对了');
+                break;
+            } else if (answer > num) {
+                alert('猜大了');
+            } else if (answer < num) {
+                alert('猜小了');
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
