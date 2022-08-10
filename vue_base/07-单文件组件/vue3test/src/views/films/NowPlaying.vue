@@ -2,7 +2,7 @@
     <div>
         Nowplaying
         <ul>
-            <li @click="handleChangePage(data.filmId)" v-for="(data,index) in dataList" :key="data.filmId">
+            <li @click="handleChangePage(data.filmId)" v-for="(data) in dataList" :key="data.filmId">
                 {{data.name}}
                 <div>{{actorFilter(data.actors)}}</div>
             </li>
@@ -11,14 +11,26 @@
 </template>
 <script>
 import axios from "axios";
+import { reactive, toRefs } from '@vue/reactivity';
+import { onMounted } from '@vue/runtime-core';
+import { useRouter } from 'vue-router';
 export default {
-    data() {
-        return {
-            dataList: [],
-        };
-    },
-    mounted() {
-        axios
+    setup() {
+        const router = useRouter() // router === this.$router
+        const obj = reactive({
+            dataList:[]
+        })
+        const handleChangePage =(id)=>{
+            console.log(id);
+            router.push(`/detail/${id}`)
+        }
+         const actorFilter = (data)=>{
+            if (data === undefined) return '暂无主演'
+            return data.map((item)=>item.name).join(" ")
+        }
+
+        onMounted(()=>{
+            axios
             .get(
                 "https://m.maizuo.com/gateway?cityId=110100&pageNum=1&pageSize=10&type=1&k=1418771",
                 {
@@ -30,17 +42,17 @@ export default {
                 }
             )
             .then((res) => {
-                this.dataList = res.data.data.films;
+                obj.dataList = res.data.data.films;
             });
-    },
-    methods:{
-        handleChangePage(id){
-            this.$router.push(`/detail/${id}`)
-        },
-        actorFilter(data){
-            if (data === undefined) return '暂无主演'
-            return data.map((item)=>item.name).join(" ")
+        }) 
+        return{
+            ...toRefs(obj),
+            handleChangePage,
+            actorFilter
+
         }
-    }
+    },
+    
+    
 };
 </script>

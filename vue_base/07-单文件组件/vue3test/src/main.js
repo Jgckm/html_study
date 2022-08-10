@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import App from './base/02-todo'
+import App from './App'
 import router from './router'
 import store from './store'
 import Vant from 'vant';
