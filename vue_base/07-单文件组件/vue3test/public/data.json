@@ -1,0 +1,16 @@
+{
+    "list":[
+        {
+            "name":"xiaomi"
+        },
+        {
+            "name":"vivo"
+        },
+        {
+            "name":"oppo"
+        },
+        {
+            "name":"huawei"
+        }
+    ]
+}
