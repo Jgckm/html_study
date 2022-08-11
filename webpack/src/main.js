@@ -2,7 +2,9 @@ import count from "./js/count";
 import sum from "./js/sum"
 import './css/index.css'
 import './less/index.less'
-
+import './sass/index.sass'
+import './sass/index.scss'
+import './stylus/index.styl'
 
 // 要想打包资源必须引入资源
 console.log(count(2,1));
