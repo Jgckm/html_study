@@ -1,6 +1,8 @@
 import count from "./js/count";
 import sum from "./js/sum"
 import './css/index.css'
+import './less/index.less'
+
 
 // 要想打包资源必须引入资源
 console.log(count(2,1));
