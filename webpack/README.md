@@ -33,6 +33,22 @@
   - [配置字体文件输出路径](#配置字体文件输出路径)
 - [配置其他资源](#配置其他资源)
 - [处理 js 资源](#处理-js-资源)
+  - [1. 配置文件](#1-配置文件)
+  - [2. 具体配置](#2-具体配置)
+  - [3. 在 webpack 中使用](#3-在-webpack-中使用)
+- [Babel](#babel)
+  - [1. 配置文件](#1-配置文件-1)
+  - [2. 具体配置](#2-具体配置-1)
+  - [3. 在 Webpack 中使用](#3-在-webpack-中使用-1)
+- [处理 Html 资源](#处理-html-资源)
+  - [1.下载包](#1下载包-2)
+  - [2.配置](#2配置-3)
+  - [3.修改index.html](#3修改indexhtml)
+  - [4.运行指令](#4运行指令)
+- [开发服务器&自动化](#开发服务器自动化)
+  - [1.下载包](#1下载包-3)
+  - [2.配置](#2配置-4)
+  - [3.运行命令](#3运行命令)
 # 安装
 安装使用 npm 安装 webpack和 webpack-cli -D表示安装在生产环境
 ```
@@ -363,7 +379,7 @@ module: {
 ```
 # 处理 js 资源
 eslint
-1. 配置文件
+## 1. 配置文件
 配置文件与很多种写法
 - `eslint.*` 新建文件，位于根目录下
   - `.eslintrc`
@@ -374,7 +390,7 @@ eslint
 
 ESlint 会查找和自动读取它们，所以配置上述文件只需要存在一个即可
 
-2. 具体配置
+## 2. 具体配置
 以 `.eslint.js` 为例
 ```javascript
 module.exports = {
@@ -398,6 +414,9 @@ parseOptions: {
 }
 ```
 2. rules 具体规则
+   - `off` 或 0 - 关闭规则
+   - `warn` 或 1 - 开启规则，使用警告级别的错误：`warn`(不会导致程序退出)
+   - `error` 或 2 - 开启规则，使用错误级别的错误：`error`(当触发的时候程序会退出)
 ```javascript
 rules: {
     semi: "error", // 静止使用分号
@@ -411,4 +430,193 @@ rules: {
         'smart' // 除了少数情况下不会有警告
     }
 }
+```
+更多规则详情见[规则文档](http://eslint.cn/docs/rules/)
+
+3. extends 继承
+   - [官方的规则](https://eslint.bootcss.com/docs/rules/)
+   - [Vue Cli官方规则](https://github.com/vuejs/vue-cli/tree/dev/packages/@vue/cli-plugin-eslint)
+   - [React Cli官方规则](https://github.com/vuejs/vue-cli/tree/dev/packages/@vue/cli-plugin-eslint)
+
+```javascript
+// 例如在React项目中，我们可以这样写配置
+module.exports = {
+  extends: ["react-app"],
+  rules: {
+    // 我们的规则会覆盖掉react-app的规则
+    // 所以想要修改规则直接改就是了
+    eqeqeq: ["warn", "smart"],
+  },
+};
+```
+## 3. 在 webpack 中使用
+
+1. 下载包
+```
+npm i eslint-webpack-plugin eslint -D
+```
+2. 然后把插件添加到你的 webpack 配置。例如：
+```js
+const ESLintWebpackPlugin = require("eslint-webpack-plugin");
+// 插件
+plugins: [
+    // plugins的配置
+    new ESLintPlugin({
+        // 指定检查文件的根目录
+        context: path.resolve(__dirname, "src"),
+    })
+],
+```
+3. 运行指令
+```
+npx webpack
+```
+4. Vscode Eslint 插件
+
+打开 VSCode，下载 Eslint 插件，即可不用编译就能看到错误，可以提前解决
+
+但是此时就会对项目所有文件默认进行 Eslint 检查了，我们 dist 目录下的打包后文件就会报错。但是我们只需要检查 src 下面的文件，不需要检查 dist 下面的文件。
+
+所以可以使用 Eslint 忽略文件解决。在项目根目录新建下面文件:
+
+- .eslintignore
+```
+# 忽略dist目录下所有文件
+dist
+```
+# Babel
+JavaScript 编译器。
+
+主要用于将 ES6 语法编写的代码转换为向后兼容的 JavaScript 语法，以便能够运行在当前和旧版本的浏览器或其他环境中
+
+## 1. 配置文件
+配置文件由很多种写法：
+- `babel.config.*`：新建文件，位于项目根目录
+  - babel.config.js
+  - babel.config.json
+- `.babelrc.*`：新建文件，位于项目根目录
+  - `.babelrc`
+  - `.babelrc.js`
+  - `.babelrc.json`
+- `package.json` 中 `babel` 不需要创建文件，在原有文件基础上写
+Babel 会查找和自动读取它们，所以以上配置文件只需要存在一个即可
+
+## 2. 具体配置
+我们以 babel.config.js 配置文件为例：
+```js
+module.exports = {
+  // 预设
+  presets: [],
+}
+```
+1. presets 预设
+简单理解：就是一组 Babel 插件, 扩展 Babel 功能
+
+- `@babel/preset-env`: 一个智能预设，允许您使用最新的 JavaScript。
+- `@babel/preset-react`：一个用来编译 React jsx 语法的预设
+- `@babel/preset-typescript`：一个用来编译 TypeScript 语法的预设
+
+## 3. 在 Webpack 中使用
+1. 下载包
+```
+npm i babel-loader @babel/core @babel/preset-env -D
+```
+2. 定义 Babel 配置文件
+- babel.config.js 
+```js
+module.exports = {
+ // 智能预设，能够编译 ES6语法
+  presets: ["@babel/preset-env"],
+};
+```
+3. 配置
+- 在 webpack.config.js
+```js
+module: {
+  rules: [
+    {
+      test: /\.m?js$/,
+      exclude: /(node_modules|bower_components)/,
+      use: {
+        loader: 'babel-loader',
+        // options: {
+        //   presets: ['@babel/preset-env']
+        // }
+      }
+    }
+  ]
+}
+```
+4. 运行指令
+```
+npx webpack
+```
+# 处理 Html 资源
+## 1.下载包
+```
+npm i html-webpack-plugin -D
+```
+## 2.配置
+```js
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+module.exports = {
+  entry: 'index.js',
+  output: {
+    path: path.resolve(__dirname, './dist'),
+    filename: 'index_bundle.js',
+  },
+  plugins: [new HtmlWebpackPlugin({
+     // 以 public/index.html 为模板创建文件
+      // 新的html文件有两个特点：1. 内容和源文件一致 2. 自动引入打包生成的js等资源
+      template: path.resolve(__dirname, "public/index.html"),
+  })],
+};
+```
+## 3.修改index.html
+去掉引入的 js 文件，因为 HtmlWebpackPlugin 会自动引入
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>webpack5</title>
+  </head>
+  <body>
+    <h1>Hello Webpack5</h1>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <div class="box4"></div>
+    <div class="box5"></div>
+    <i class="iconfont icon-arrow-down"></i>
+    <i class="iconfont icon-ashbin"></i>
+    <i class="iconfont icon-browse"></i>
+  </body>
+</html>
+```
+## 4.运行指令
+```
+npx webpack
+```
+# 开发服务器&自动化
+## 1.下载包
+```
+npm i webpack-dev-server -D
+```
+## 2.配置
+```js
+module.exports = {
+   // 开发服务器
+  devServer: {
+    host: "localhost", // 启动服务器域名
+    port: "3000", // 启动服务器端口号
+    open: true, // 是否自动打开浏览器
+  },
+}
+```
+## 3.运行命令
+```
+npx webpack serve
 ```

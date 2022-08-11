@@ -1,6 +1,6 @@
 const path = require('path') // nodejs 核心模块 专门处理路径问题
-
-
+const ESLintWebpackPlugin = require("eslint-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
     // 入口
     entry: "./src/main.js", // 相对路径
@@ -13,7 +13,7 @@ module.exports = {
         filename: 'js/main.js',
         // 自动清空上一次打包内容
         // 原理：在打包前，将path 整个目录内容清空，在进行打包
-        clean:true,
+        clean: true,
     },
     // 加载器
     module: {
@@ -81,12 +81,37 @@ module.exports = {
                     filename: 'static/mida/[hash:10][ext][query]'
                 }
             },
+            {
+                test: /\.js$/,
+                exclude: /(node_modules)/, // 排除node_modules 中的js 文件（这些文件不处理）
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            }
         ]
     },
     // 插件
     plugins: [
         // plugins的配置
+        new ESLintWebpackPlugin({
+            // 指定检查文件的根目录
+            context: path.resolve(__dirname, "src"),
+        }),
+        new HtmlWebpackPlugin({
+            // 模板：以public/index.html文件创建的html文件
+            // 新的html文件的特点：1.和原来的一致 2.自动引入打包输出的文件
+            template: path.resolve(__dirname, "public/index.html"),
+        }),
     ],
+    // 开发服务器：不会输出资源 ，在内存中编译打包
+    devServer: {
+        host: "localhost", // 启动服务器域名
+        port: "3000", // 启动服务器端口号
+        open: true, // 是否自动打开浏览器
+    },
     // 模式
     mode: "development"
 }
