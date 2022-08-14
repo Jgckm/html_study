@@ -7,13 +7,10 @@ module.exports = {
     // 输出
     output: {
         // path 所有文件输出路径
-        // __dirname nodejs的变量 表示当前文件的文件夹目录
-        path: path.resolve(__dirname, './dist'), // 绝对路径
+
+        path: undefined,
         // 文件名
         filename: 'js/main.js',
-        // 自动清空上一次打包内容
-        // 原理：在打包前，将path 整个目录内容清空，在进行打包
-        clean: true,
     },
     // 加载器
     module: {
@@ -98,12 +95,12 @@ module.exports = {
         // plugins的配置
         new ESLintWebpackPlugin({
             // 指定检查文件的根目录
-            context: path.resolve(__dirname, "src"),
+            context: path.resolve(__dirname, "../src"),
         }),
         new HtmlWebpackPlugin({
             // 模板：以public/index.html文件创建的html文件
             // 新的html文件的特点：1.和原来的一致 2.自动引入打包输出的文件
-            template: path.resolve(__dirname, "public/index.html"),
+            template: path.resolve(__dirname, "../public/index.html"),
         }),
     ],
     // 开发服务器：不会输出资源 ，在内存中编译打包
